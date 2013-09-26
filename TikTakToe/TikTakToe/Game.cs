@@ -75,7 +75,7 @@ class Game
         if (Winner != null)
         {
             ("Vinnaren är " + Winner[0] + ". Grattis!").CW(9, 18, WinnerColor);
-            ("Du placerade vinnande täcken på").CW(6, 19, WinnerColor);
+            ("Du placerade vinnande tecken på").CW(6, 19, WinnerColor);
             (Winner[1] + "," + Winner[2] + "," + Winner[3]).CW(18, 20, WinnerColor);
 
         }
