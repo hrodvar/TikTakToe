@@ -15,6 +15,8 @@ using System.Linq;
 class Game
 {
     // properties
+    public char[] WinningNumbers = {'l','k','j','h','g','f','d','s','a',};
+
     // end of properties
 
     // constructor
@@ -27,9 +29,9 @@ class Game
         do
         {
             Turn(thomas);
-            Winner(board.Play(Console.ReadKey(true).KeyChar, thomas.Symbol), thomas);
+            GameResult(Winner(board.Play(Console.ReadKey(true).KeyChar, thomas.Symbol), thomas));
             Turn(johan);
-            board.Play(Console.ReadKey(true).KeyChar, johan.Symbol);
+            GameResult(Winner(board.Play(Console.ReadKey(true).KeyChar, johan.Symbol), johan));
         } while(true);
     }   // end of Game()
     // end of constructor
@@ -38,63 +40,43 @@ class Game
 
     public string[] Winner(char pos, Player player)
     {
+        
         int Pos = Convert.ToInt16(pos.ToString());
-        char[] Arr = new char[9];
+        //char[] WinningNumbers = new char[9];
         string[] winner = new string[4];
+        
+        WinningNumbers[Pos - 1] = player.Symbol;
 
-        Arr[Pos] = player.Symbol;
 
-        if (Arr[0] == Arr[1] && Arr[1] == Arr[2])
-        {
-            ("hej").CW();
-            winner = new string[] {player.PlayerName, "1", "2", "3"};            
-            return winner;
-        }
-        else if (Arr[3] == Arr[4] && Arr[4] == Arr[5])
-        {
+        if (WinningNumbers[0] == WinningNumbers[1] && WinningNumbers[1] == WinningNumbers[2])
+            winner = new string[] { player.PlayerName, "1", "2", "3" };
+        else if (WinningNumbers[3] == WinningNumbers[4] && WinningNumbers[4] == WinningNumbers[5])
             winner = new string[] { player.PlayerName, "4", "5", "6" };
-            return winner;
-        }
-        else if (Arr[6] == Arr[7] && Arr[7] == Arr[8])
-        {
+        else if (WinningNumbers[6] == WinningNumbers[7] && WinningNumbers[7] == WinningNumbers[8])
             winner = new string[] { player.PlayerName, "7", "8", "9" };
-            return winner;
-        }
-        else if (Arr[0] == Arr[3] && Arr[3] == Arr[6])
-        {
+        else if (WinningNumbers[0] == WinningNumbers[3] && WinningNumbers[3] == WinningNumbers[6])
             winner = new string[] { player.PlayerName, "1", "4", "7" };
-            return winner;
-        }
-        else if (Arr[1] == Arr[4] && Arr[4] == Arr[7])
-        {
+        else if (WinningNumbers[1] == WinningNumbers[4] && WinningNumbers[4] == WinningNumbers[7])
             winner = new string[] { player.PlayerName, "2", "5", "8" };
-            return winner;
-        }
-        else if (Arr[2] == Arr[5] && Arr[5] == Arr[8])
-        {
+        else if (WinningNumbers[2] == WinningNumbers[5] && WinningNumbers[5] == WinningNumbers[8])
             winner = new string[] { player.PlayerName, "3", "6", "9" };
-            return winner;
-        }
-        else if (Arr[0] == Arr[4] && Arr[4] == Arr[8])
-        {
+        else if (WinningNumbers[0] == WinningNumbers[4] && WinningNumbers[4] == WinningNumbers[8])
             winner = new string[] { player.PlayerName, "1", "5", "9" };
-            return winner;
-        }
-        else if (Arr[6] == Arr[4] && Arr[4] == Arr[2])
-        {
+        else if (WinningNumbers[6] == WinningNumbers[4] && WinningNumbers[4] == WinningNumbers[2])
             winner = new string[] { player.PlayerName, "7", "5", "3" };
-            return winner;
-        }
-        else return null;
+        else
+            winner = null;
+        return winner;
     }
-    public void GameSituation(string[] Winner)
+    public void GameResult(string[] Winner)
     {
+        
         string WinnerColor = "Yellow";
         if (Winner != null)
         {
-            ("Vinnaren är" + Winner[0] + ". Grattis!").CW(9, 18, WinnerColor);
+            ("Vinnaren är " + Winner[0] + ". Grattis!").CW(9, 18, WinnerColor);
             ("Du placerade vinnande täcken på").CW(6, 19, WinnerColor);
-            (Winner[1] + Winner[2] + Winner[3]).CW(18, 20, WinnerColor);
+            (Winner[1] + "," + Winner[2] + "," + Winner[3]).CW(18, 20, WinnerColor);
 
         }
     }   // end of GameSituation()
@@ -108,7 +90,7 @@ class Game
 
         if (nameArrey[i - 1] != 's')
             name = name + "s";
-        ("Det är: " + name + " (" + Player.Symbol + ") " + "Tur att spela!").CW(5, 19, "Green");
+        ("Det är: " + name + " (" + Player.Symbol + ") " + "Tur att spela!").CW(5, 4, "Green");
        
     }
     // end of methods
