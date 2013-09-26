@@ -59,7 +59,7 @@ class Board
         (strValue1).CW(xSheet, ySheet, boardColor);
     }   // end of CreateBoard()
 
-    public void Play(char i, char symbol)
+    public char Play(char i, char symbol)
     {
 
         switch (i)
@@ -75,6 +75,7 @@ class Board
             case '9': { XPlayerPosition = XPosition[2]; YPlayerPosition = YPosition[2]; break; }
         }   // end of switch
         WritePossition(symbol);
+        return i;
     }   // end of Play()
 
     public void WritePossition(char symbol)
