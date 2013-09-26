@@ -9,9 +9,9 @@ using System.Threading.Tasks;
  *               Program: class Player is part of the project TikTakToe.
  *                 Datum: 2013-09-25
  *            Programare: Hrodvar Johannsson
- *                        Mikael
- *                        Pilip
- *                        Fatos
+ *                        Mikael Wilkon
+ *                        Philip Andreasson
+ *                        Fatos Jasharaj
  */
 
 class Board
@@ -21,6 +21,9 @@ class Board
     public int[] YPosition = new int[] { 7, 11, 15 };
     public int XPlayerPosition { get; set; }
     public int YPlayerPosition { get; set; }
+    public string boardColor = "Yellow";
+    public string playerColor = "Red";
+    public string symbolColor = "Green"
     // end of properties
 
     // constructor
@@ -34,37 +37,27 @@ class Board
     {
         int ySheet = 5;
         int xSheet = 5;
-        int yColumn = 5;
         int xColumn = 5;
         string strValue1 = new String('-', 31);
         string strValue2 = "|";
         for (int i = 0; i < 3; i++)
         {
-            Console.SetCursorPosition(xSheet, ySheet);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(strValue1);
+            (strValue1).CW(xSheet, ySheet, boardColor);
             Console.SetCursorPosition(xColumn, ySheet + 1);
             for (int x = 0; x < 4; x++)
             {
-                Console.SetCursorPosition(xColumn, ySheet + 1);
-                Console.WriteLine(strValue2);
-                Console.SetCursorPosition(xColumn, ySheet + 2);
-                Console.WriteLine(strValue2);
-                Console.SetCursorPosition(xColumn, ySheet + 3);
-                Console.WriteLine(strValue2);
-                
+                (strValue2).CW(xColumn, ySheet + 1, boardColor);
+                (strValue2).CW(xColumn, ySheet + 2, boardColor);
+                (strValue2).CW(xColumn, ySheet + 3, boardColor);
                 if (x == 3)
                     xColumn = 5;
                 else
                     xColumn += 10;
-            }
-
+            }   // end of for
             ySheet += 4;
-
-        }
-        Console.SetCursorPosition(xSheet, ySheet);
-        Console.WriteLine(strValue1);
-    }
+        }   // end of for
+        (strValue1).CW(xSheet, ySheet, boardColor);
+    }   // end of CreateBoard()
 
     public void Play(char i, char symbol)
     {
@@ -80,33 +73,22 @@ class Board
             case '7': { XPlayerPosition = XPosition[0]; YPlayerPosition = YPosition[2]; break; }
             case '8': { XPlayerPosition = XPosition[1]; YPlayerPosition = YPosition[2]; break; }
             case '9': { XPlayerPosition = XPosition[2]; YPlayerPosition = YPosition[2]; break; }
-        }
+        }   // end of switch
         WritePossition(symbol);
-    }
+    }   // end of Play()
 
     public void WritePossition(char symbol)
     {
-        Console.SetCursorPosition(XPlayerPosition, YPlayerPosition);
-        Console.WriteLine(symbol);
-    }
+        (symbol.ToString()).CW(XPlayerPosition, YPlayerPosition, symbolColor);
+    }   // end of WritePossition()
 
     public void PlayerInformation(string player1, char player1Symbol, string player2, char player2Symbol)
     {
-        Console.SetCursorPosition(5, 2);
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write(player1);
-        Console.SetCursorPosition(12, 2);
-        Console.Write(" har ");
-        Console.SetCursorPosition(18, 2);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write(player1Symbol);
-        Console.SetCursorPosition(5, 3);
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write(player2 );
-        Console.SetCursorPosition(12, 3);
-        Console.Write(" har ");
-        Console.SetCursorPosition(18, 3);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write(player2Symbol);
-    }
-}
+        (player1).CW(5, 2, playerColor);
+        ("har").CW(12, 2, playerColor);
+        (player1Symbol.ToString()).CW(17, 2, symbolColor);
+        (player2).CW(5, 3, playerColor);
+        ("har").CW(12, 3, playerColor);
+        (player2Symbol.ToString()).CW(17, 3, symbolColor);
+    }   // end of PlayerInformation()
+}   // end of class Board

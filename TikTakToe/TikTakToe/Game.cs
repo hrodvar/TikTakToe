@@ -7,13 +7,17 @@ using System.Linq;
  *               Program: class Player is part of the project TikTakToe.
  *                 Datum: 2013-09-25
  *            Programare: Hrodvar Johannsson
- *                        Mikael
- *                        Pilip
- *                        Fatos
+ *                        Mikael Wilkon
+ *                        Philip Andreasson
+ *                        Fatos Jasharaj
  */
 
 class Game
 {
+    // properties
+    // end of properties
+
+    // constructor
     public Game()
     {
         Player thomas = new Player("Thomas", 'O');
@@ -25,6 +29,15 @@ class Game
             board.Play(Console.ReadKey(true).KeyChar, thomas.Symbol);
             board.Play(Console.ReadKey(true).KeyChar, johan.Symbol);
         } while(true);
-    }
+    }   // end of Game()
+    // end of constructor
+
+    // methods
+    public void GameSituation()
+    {
+        
+    }   // end of GameSituation()
+    // end of methods
+
 }
 

@@ -9,26 +9,31 @@ using System.Threading.Tasks;
  *               Program: class Player is part of the project TikTakToe.
  *                 Datum: 2013-09-25
  *            Programare: Hrodvar Johannsson
- *                        Mikael
- *                        Pilip
- *                        Fatos
+ *                        Mikael Wilkon
+ *                        Philip Andreasson
+ *                        Fatos Jasharaj
  */
 
-namespace TikTakToe
+class Program
 {
-    class Program
+    // properties
+    // end of properties
+
+    // Constructor
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            utseende();
-            Game game = new Game(); 
-        }
-         
-        static void utseende()
-        {
-            Console.SetWindowSize(40, 20);
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.Clear();
-        }
+        utseende();
+        Game game = new Game(); 
     }
+    // end of constructor
+
+    // methods
+    static void utseende()
+    {
+        Console.SetWindowSize(40, 20);
+        Console.BackgroundColor = ConsoleColor.DarkBlue;
+        Console.Clear();
+    }   // end of utseende()
+
+    // end of methods
 }

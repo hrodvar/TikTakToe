@@ -9,14 +9,14 @@ using System.Threading.Tasks;
  *               Program: class Player is part of the project TikTakToe.
  *                 Datum: 2013-09-25
  *            Programare: Hrodvar Johannsson
- *                        Mikael
- *                        Pilip
- *                        Fatos
+ *                        Mikael Wilkon
+ *                        Philip Andreasson
+ *                        Fatos Jasharaj
  */
 
 public static class Extensions
 {
-    public static void CW(this string strValue, int lineBreak = 0, int antlaTab = 0, string color = "White")
+    public static void CW(this string strValue, int xPosition = 0, int yPosition = 0, string color = "White")
     {
         String[] colorNames = ConsoleColor.GetNames(typeof(ConsoleColor));
         foreach (string colorName in colorNames)
@@ -27,8 +27,7 @@ public static class Extensions
                 break;
             }   // end of if       
 
-        string strLineBreak = new String('\n', lineBreak);
-        string strTab = new String('\t', antlaTab);
-        Console.Write(strLineBreak + strTab + strValue);
+        Console.SetCursorPosition(xPosition, yPosition);
+        Console.Write(strValue);
     }   // end of CW()
 }

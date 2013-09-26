@@ -5,9 +5,9 @@
  *               Program: class Player is part of the project TikTakToe.
  *                 Datum: 2013-09-25
  *            Programare: Hrodvar Johannsson
- *                        Mikael
- *                        Pilip
- *                        Fatos
+ *                        Mikael Wilkon
+ *                        Philip Andreasson
+ *                        Fatos Jasharaj
  */
 
 class Player
