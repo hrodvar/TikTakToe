@@ -23,7 +23,7 @@ class Board
     public int YPlayerPosition { get; set; }
     public string boardColor = "Yellow";
     public string playerColor = "Red";
-    public string symbolColor = "Green"
+    public string symbolColor = "Green";
     // end of properties
 
     // constructor
@@ -90,5 +90,7 @@ class Board
         (player2).CW(5, 3, playerColor);
         ("har").CW(12, 3, playerColor);
         (player2Symbol.ToString()).CW(17, 3, symbolColor);
+
+        
     }   // end of PlayerInformation()
 }   // end of class Board
