@@ -17,7 +17,7 @@ public class Game
 {
     // properties
     public string WinnerColor = "Green";
-    //public Players[] PlayersArray = new Player(name, symbol);
+    
 
     public char[] WinningNumbers = {'l','k','j','h','g','f','d','s','a',};
     // end of properties
