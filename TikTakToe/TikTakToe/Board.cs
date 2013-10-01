@@ -22,16 +22,10 @@ public class Board
     public int[] YPosition = new int[] { 7, 11, 15 };
     public int XPlayerPosition { get; set; }
     public int YPlayerPosition { get; set; }
-<<<<<<< HEAD
     public string BoardColor = "Yellow";
     public string PlayerColor = "Red";
     public string SymbolColor = "Green";
     public string InstructionColor = "Gray";
-=======
-    public string boardColor = "Yellow";
-    public string playerColor = "Red";
-    public string symbolColor = "Green";
->>>>>>> 6155ee32377023b609b6ab2e811ccf377a9b14d3
     // end of properties
 
     // constructor
@@ -95,11 +89,7 @@ public class Board
         }
     }   // end of CreateBoard()
 
-<<<<<<< HEAD
     public int Play(char c, char symbol, string color)
-=======
-    public char Play(char i, char symbol)
->>>>>>> 6155ee32377023b609b6ab2e811ccf377a9b14d3
     {
         int i = 0;
         switch (c)
@@ -114,38 +104,22 @@ public class Board
             case '8': { XPlayerPosition = XPosition[1]; YPlayerPosition = YPosition[2]; i = 8; break; }
             case '9': { XPlayerPosition = XPosition[2]; YPlayerPosition = YPosition[2]; i = 9; break; }
         }   // end of switch
-<<<<<<< HEAD
-        WritePossition(symbol, color);
-        return i; //Convert.ToInt16(i.ToString());
-=======
-        WritePossition(symbol);
+        WritePosition(symbol, color);
         return i;
->>>>>>> 6155ee32377023b609b6ab2e811ccf377a9b14d3
     }   // end of Play()
 
-    public void WritePossition(char symbol, string color)
+    public void WritePosition(char symbol, string color)
     {
         (symbol.ToString()).CW(XPlayerPosition, YPlayerPosition, color);
     }   // end of WritePossition()
 
     public void PlayerInformation(string player1, char player1Symbol, string player2, char player2Symbol)
     {
-<<<<<<< HEAD
         (player1).CW(5, 2, PlayerColor);
         ("har").CW(12, 2, PlayerColor);
         (player1Symbol.ToString()).CW(17, 2, SymbolColor);
         (player2).CW(5, 3, PlayerColor);
         ("har").CW(12, 3, PlayerColor);
         (player2Symbol.ToString()).CW(17, 3, SymbolColor);
-=======
-        (player1).CW(5, 2, playerColor);
-        ("har").CW(12, 2, playerColor);
-        (player1Symbol.ToString()).CW(17, 2, symbolColor);
-        (player2).CW(5, 3, playerColor);
-        ("har").CW(12, 3, playerColor);
-        (player2Symbol.ToString()).CW(17, 3, symbolColor);
-
-        
->>>>>>> 6155ee32377023b609b6ab2e811ccf377a9b14d3
     }   // end of PlayerInformation()
 }   // end of class Board

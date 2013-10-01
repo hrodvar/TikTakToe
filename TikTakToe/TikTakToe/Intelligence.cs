@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -86,17 +87,16 @@ public class Intelligence
                 if (array.Length > 3)
                 {
                     int listCounter = 0;
-                    List<int> list = new List<int>();
                     foreach (int num in array)
                     {
                         list.Add(num);
                     }
-                    do
-                    {
-                        i = (array[i + list(listCounter)] == array[i] + 1) ? i += 1 : 0;
+                    //do
+                    //{
+                        i = (array[i + list.IndexOf(listCounter)] == array[i] + 1) ? i += 1 : 0;
                         
 
-                    } while ();
+                    //} while ();
                 }
                     i = (array[i + 1] == array[i] + 1) ? i += 1 : 0;
                 Winner = i != 0 ? true : false;

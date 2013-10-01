@@ -15,13 +15,10 @@ using System.Linq;
 public class Game
 {
     // properties
-<<<<<<< HEAD
     public string WinnerColor = "Green";
     //public Players[] PlayersArray = new Player(name, symbol);
-=======
-    public char[] WinningNumbers = {'l','k','j','h','g','f','d','s','a',};
 
->>>>>>> 6155ee32377023b609b6ab2e811ccf377a9b14d3
+    public char[] WinningNumbers = {'l','k','j','h','g','f','d','s','a',};
     // end of properties
 
     // constructor
@@ -34,7 +31,6 @@ public class Game
         int i = 0;
         do
         {
-<<<<<<< HEAD
             Array.Resize<int>(ref human.PlayerMoves, i + 1);
             Array.Resize<int>(ref computer.PlayerMoves, i + 1);
             human.PlayerMoves[i] = (!human.PlayerMoves.Contains(i) && !computer.PlayerMoves.Contains(i)) ?
@@ -52,18 +48,15 @@ public class Game
                 break;
             i++;
         } while (gameSituation);
-=======
-            Turn(thomas);
-            GameResult(Winner(board.Play(Console.ReadKey(true).KeyChar, thomas.Symbol), thomas));
-            Turn(johan);
-            GameResult(Winner(board.Play(Console.ReadKey(true).KeyChar, johan.Symbol), johan));
-        } while(true);
->>>>>>> 6155ee32377023b609b6ab2e811ccf377a9b14d3
+        //    Turn(thomas);
+        //    GameResult(Winner(board.Play(Console.ReadKey(true).KeyChar, thomas.Symbol), thomas));
+        //    Turn(johan);
+        //    GameResult(Winner(board.Play(Console.ReadKey(true).KeyChar, johan.Symbol), johan));
+        //} while(true);
     }   // end of Game()
     // end of constructor
 
     // methods
-<<<<<<< HEAD
     public bool GameSituation(string name, bool gameSituation)
     {
         if (gameSituation)
@@ -73,7 +66,7 @@ public class Game
         }
         else
             return true;
-=======
+    }   // end of GameSituation()
 
     public string[] Winner(char pos, Player player)
     {
@@ -116,8 +109,7 @@ public class Game
             (Winner[1] + "," + Winner[2] + "," + Winner[3]).CW(18, 20, WinnerColor);
 
         }
->>>>>>> 6155ee32377023b609b6ab2e811ccf377a9b14d3
-    }   // end of GameSituation()
+    }   // end of GameResult()
 
     public void Turn(Player Player)
     {
