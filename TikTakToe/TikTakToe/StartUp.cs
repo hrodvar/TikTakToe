@@ -19,7 +19,9 @@ using System.Threading.Tasks;
     {
         public int BoardSize = 3;
         public string BoardColor = "Yellow";
-
+        public string TextColor = "Yellow";
+        public List<string> Alternativ = new List<string>() {"Player", "Mikael", 
+        "Fatos", "Philip", "Xin", "Hrodvar" };
         public Player Human { get; set; }
         public Player Computer { get; set; }
 
@@ -27,6 +29,8 @@ using System.Threading.Tasks;
         {
             
             CreateFront(BoardSize);
+            MenylList();
+            
             
         }
         
@@ -50,7 +54,7 @@ using System.Threading.Tasks;
 
            
            (strLeftTopCorner + strHorisontell + strRightTopCorner).CW(xSheet, ySheet, BoardColor);
-           ("Välkommen!").CW(15,4,"Yellow");
+           ("Välkommen!").CW(15, 4, TextColor);
             
 
             
@@ -63,25 +67,65 @@ using System.Threading.Tasks;
 
             (strLeftBottomCorner + strHorisontell + strRightBottomCorner).CW(xSheet, ySheet + 15, BoardColor);
             
-            GetNames();
+            //GetNames();
             
             
         }
 
-        public void GetNames()
+        public void GetNames(bool onePlayer)
         {
-           
-            
-            ("Spelare1 namn: ").CW(6, 8, "Yellow");
+            CreateFront(BoardSize);
+            ("Spelare1 namn: ").CW(6, 8, TextColor);
             Console.SetCursorPosition(21,8);
 
             Human = new Player(Console.ReadLine(), 'X');
-            
-            ("Spelare2 namn:").CW(6, 12, "Yellow");
-            Console.SetCursorPosition(21, 12);
+            if (!onePlayer)
+            {
+                ("Spelare2 namn:").CW(6, 12, TextColor);
+                Console.SetCursorPosition(21, 12);
 
-            Computer = new Player(Console.ReadLine(), 'O');
+                Computer = new Player(Console.ReadLine(), 'O');
+            }
             Console.Clear();
+        }
+        
+        public void MenylList()
+        {
+            
+            CreateFront(BoardSize);
+            ("Till våran TicTacToe!").CW(10, 6, TextColor);
+
+            for (int i = 0; i < Alternativ.Count; i++)
+            {
+                
+                    
+                    (i+1 + ". " +  Alternativ[0] + " Vs " + Alternativ[i]  ).CW(6, i+8, TextColor);
+                    if(i !=0)("-AI").CW(31, i+8,TextColor);
+                
+
+            }
+
+
+
+
+            AltVal();
+            
+            Console.Clear();
+
+        }
+        public void AltVal()
+        {
+            char key = Console.ReadKey(true).KeyChar;
+           
+            switch (key)
+            {
+                case '1': { GetNames(false);break; }
+                case '2': { GetNames(true); break; }
+                case '3': { GetNames(true); break; }
+                case '4': { GetNames(true); break; }
+                case '5': { GetNames(true); break; }
+                case '6': { GetNames(true); break; }
+            }
         }
             
 }
