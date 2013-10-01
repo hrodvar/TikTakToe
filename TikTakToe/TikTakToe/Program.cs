@@ -40,7 +40,11 @@ class Program
     // methods
     static void utseende()
     {
+<<<<<<< HEAD
         Console.SetWindowSize(BoardSize * 13, BoardSize * 7);
+=======
+        Console.SetWindowSize(42, 22);
+>>>>>>> 6155ee32377023b609b6ab2e811ccf377a9b14d3
         Console.BackgroundColor = ConsoleColor.DarkBlue;
         Console.Clear();
     }   // end of utseende()
