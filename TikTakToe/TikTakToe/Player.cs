@@ -10,11 +10,12 @@
  *                        Fatos Jasharaj
  */
 
-class Player
+public class Player
 {
     // properties
     public string PlayerName { get; set; }
     public Char Symbol { get; set; }
+    public int[] PlayerMoves = new int[0];
     // end of properties
 
     // constructor

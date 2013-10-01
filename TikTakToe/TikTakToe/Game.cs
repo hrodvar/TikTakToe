@@ -12,30 +12,53 @@ using System.Linq;
  *                        Fatos Jasharaj
  */
 
-class Game
+public class Game
 {
     // properties
+    public string WinnerColor = "Green";
+    //public Players[] PlayersArray = new Player(name, symbol);
     // end of properties
 
     // constructor
-    public Game()
+    public Game(int boardSize, Player human, Player computer)
     {
-        Player thomas = new Player("Thomas", 'O');
-        Player johan = new Player("Johan", 'X');
-        Board board = new Board();
-        board.PlayerInformation(thomas.PlayerName, thomas.Symbol, johan.PlayerName, johan.Symbol);
+        bool gameSituation = true;
+        Board board = new Board(boardSize);
+        Intelligence intelligence = new Intelligence();
+        board.PlayerInformation(human.PlayerName, human.Symbol, computer.PlayerName, computer.Symbol);
+        int i = 0;
         do
         {
-            board.Play(Console.ReadKey(true).KeyChar, thomas.Symbol);
-            board.Play(Console.ReadKey(true).KeyChar, johan.Symbol);
-        } while(true);
+            Array.Resize<int>(ref human.PlayerMoves, i + 1);
+            Array.Resize<int>(ref computer.PlayerMoves, i + 1);
+            human.PlayerMoves[i] = (!human.PlayerMoves.Contains(i) && !computer.PlayerMoves.Contains(i)) ?
+                board.Play(Console.ReadKey(true).KeyChar, human.Symbol, board.SymbolColor) :
+                board.Play(Console.ReadKey(true).KeyChar, human.Symbol, board.SymbolColor);
+            //human.PlayerMoves[i] = board.Play(Console.ReadKey(true).KeyChar, human.Symbol, board.SymbolColor);
+            if (GameSituation(human.PlayerName,intelligence.IntelligenceCalculator(human.PlayerMoves)))
+                gameSituation = true;
+            else
+                break;
+            computer.PlayerMoves[i] = board.Play(Console.ReadKey(true).KeyChar, computer.Symbol, board.SymbolColor);
+            if (GameSituation(computer.PlayerName, intelligence.IntelligenceCalculator(computer.PlayerMoves)))
+                gameSituation = true;
+            else
+                break;
+            i++;
+        } while (gameSituation);
     }   // end of Game()
     // end of constructor
 
     // methods
-    public void GameSituation()
+    public bool GameSituation(string name, bool gameSituation)
     {
-        
+        if (gameSituation)
+        {
+            (name + " is a winner!").CW(0, 0, WinnerColor);
+            return false;
+        }
+        else
+            return true;
     }   // end of GameSituation()
     // end of methods
 
