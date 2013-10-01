@@ -10,6 +10,7 @@ using System.Linq;
  *                        Mikael Wilkon
  *                        Philip Andreasson
  *                        Fatos Jasharaj
+ *                        Xin Hansen
  */
 
 public class Game

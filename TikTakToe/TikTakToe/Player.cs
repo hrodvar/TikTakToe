@@ -8,6 +8,7 @@
  *                        Mikael Wilkon
  *                        Philip Andreasson
  *                        Fatos Jasharaj
+ *                        Xin Hansen
  */
 
 public class Player
