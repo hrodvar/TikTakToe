@@ -34,15 +34,22 @@ public class Game
         {
             Array.Resize<int>(ref human.PlayerMoves, i + 1);
             Array.Resize<int>(ref computer.PlayerMoves, i + 1);
-            human.PlayerMoves[i] = (!human.PlayerMoves.Contains(i) && !computer.PlayerMoves.Contains(i)) ?
-                board.Play(Console.ReadKey(true).KeyChar, human.Symbol, board.SymbolColor) :
-                board.Play(Console.ReadKey(true).KeyChar, human.Symbol, board.SymbolColor);
+            do
+            {
+                human.PlayerMoves[i] = (!human.PlayerMoves.Contains(i + 1) && !computer.PlayerMoves.Contains(i + 1)) ?
+                    board.Play(Console.ReadKey(true).KeyChar, human.Symbol, board.SymbolColor) : 99;
+            } while (computer.PlayerMoves[i] != 99);
             //human.PlayerMoves[i] = board.Play(Console.ReadKey(true).KeyChar, human.Symbol, board.SymbolColor);
             if (GameSituation(human.PlayerName,intelligence.IntelligenceCalculator(human.PlayerMoves)))
                 gameSituation = true;
             else
                 break;
-            computer.PlayerMoves[i] = board.Play(Console.ReadKey(true).KeyChar, computer.Symbol, board.SymbolColor);
+            //computer.PlayerMoves[i] = board.Play(Console.ReadKey(true).KeyChar, computer.Symbol, board.SymbolColor);
+            do
+            {
+                computer.PlayerMoves[i] = (!human.PlayerMoves.Contains(i + 1) && !computer.PlayerMoves.Contains(i + 1)) ?
+                   board.Play(Console.ReadKey(true).KeyChar, computer.Symbol, board.SymbolColor) : 99;
+            } while (computer.PlayerMoves[i] != 99);
             if (GameSituation(computer.PlayerName, intelligence.IntelligenceCalculator(computer.PlayerMoves)))
                 gameSituation = true;
             else
