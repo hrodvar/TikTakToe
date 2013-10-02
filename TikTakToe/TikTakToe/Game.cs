@@ -63,33 +63,28 @@ public class Game
                     gameSituation = false;
                     break;
                 }
+                else if (competitor.Length == 0)
+                {
+                    board.Play(choose, player.Symbol, board.SymbolColor);
+                    gameSituation = true;
+                    break;
+                }
                 else
                 {
-                    if (competitor.Length == 0)
+                    foreach (int valueCompetitor in competitor)
                     {
-                        //board.Play(choose, player.Symbol, board.SymbolColor);
-                        gameSituation = true;
-                        //break;
-                    }
-                    else
-                    {
-                        foreach (int valueCompetitor in competitor)
+                        if (valueCompetitor == value)
                         {
-                            if (valueCompetitor == value)
-                            {
-                                gameSituation = false;
-                                break;
-                            }
-                            else
-                            {
-                                //board.Play(choose, player.Symbol, board.SymbolColor);
-                                gameSituation = true;
-                                //break;
-                            }
+                            gameSituation = false;
+                            break;
+                        }
+                        else
+                        {
+                            board.Play(choose, player.Symbol, board.SymbolColor);
+                            gameSituation = true;
+                            break;
                         }
                     }
-                    
-                    //break;
                 }
             }
         }

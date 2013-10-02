@@ -1,0 +1,9 @@
+diff a/TikTakToe/TikTakToe/Game.cs b/TikTakToe/TikTakToe/Game.cs	(rejected hunks)
+@@ -17,7 +17,6 @@
+ {
+     // properties
+     public string WinnerColor = "Green";
+-    //public Players[] PlayersArray = new Player(name, symbol);
+     
+ 
+     public char[] WinningNumbers = {'l','k','j','h','g','f','d','s','a',};
