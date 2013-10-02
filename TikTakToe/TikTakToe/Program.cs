@@ -17,36 +17,35 @@ using System.Threading.Tasks;
 
 class Program
 {
+
     // properties
-    public static int    BoardSize      = 3;
-    public static string HumanName      = "Hroi";
-    public static char   SymbolHuman    = 'X';
-    public static Player Human          = new Player(HumanName, SymbolHuman);
-    public static string ComputerName   = "Thomas";
-    public static char   SymbolComputer = 'O';
-    public static Player Computer       = new Player(ComputerName, SymbolComputer);
+   
     // end of properties
 
     // Constructor
     static void Main(string[] args)
     {
-        utseende();
+        
+
+        StartUp startUp = new StartUp();
+        
         do
         {
-            Game game = new Game(BoardSize, Human, Computer); 
-        } while (Run());
+            Game game = new Game(startUp.BoardSize, startUp.Human, startUp.Computer); 
+        } while (Run(startUp.Human, startUp.Computer));
+        
     }
     // end of constructor
 
     // methods
-    static void utseende()
+    static void utseende(int boardSize)
     {
-        Console.SetWindowSize(BoardSize * 13, BoardSize * 7);
+        Console.SetWindowSize(boardSize * 13, boardSize * 7);
         Console.BackgroundColor = ConsoleColor.DarkBlue;
         Console.Clear();
     }   // end of utseende()
 
-    static bool Run()
+    static bool Run(Player human, Player computer)
     {
         bool result = false;
         do
@@ -54,8 +53,8 @@ class Program
             ConsoleKey key = Console.ReadKey(true).Key;
             if (key == ConsoleKey.Enter)
             {
-                Array.Clear(Human.PlayerMoves, 0, Human.PlayerMoves.Length);
-                Array.Clear(Computer.PlayerMoves, 0, Computer.PlayerMoves.Length);
+                Array.Clear(human.PlayerMoves, 0, human.PlayerMoves.Length);
+                Array.Clear(computer.PlayerMoves, 0, computer.PlayerMoves.Length);
                 Console.Clear();
                 result = true;
             }   //  end of if
