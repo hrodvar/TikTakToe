@@ -21,8 +21,7 @@ public class StartUp
     public int BoardSize = 3;
     public string BoardColor = "Yellow";
     public string TextColor = "Yellow";
-    public List<string> Alternativ = new List<string>() {"Player", "Mikael", 
-    "Fatos", "Philip", "Xin", "Hrodvar" };
+    public List<string> Alternativ = new List<string>() {"Player", "Mikael", "Fatos", "Philip", "Xin", "Hrodvar" };
     public Player Human { get; set; }
     public Player Computer { get; set; }
     // end of properties
@@ -38,7 +37,6 @@ public class StartUp
     // methods
     public void CreateFront(int boardsize)
     {
-            
         int ySheet = 2;
         int xSheet = 4;
         string strLeftTopCorner = new String('╔', 1);
@@ -47,11 +45,9 @@ public class StartUp
         string strRightBottomCorner = new String('╝', 1);
         string strHorisontell = new String('═', 30);
         string strVertikal = new String('║', 1);
-            
-        Console.SetWindowSize(boardsize * 13, boardsize * 7);
-        Console.BackgroundColor = ConsoleColor.DarkBlue;
-        Console.Clear();
-   
+
+        Utseende(boardsize);
+
         (strLeftTopCorner + strHorisontell + strRightTopCorner).CW(xSheet, ySheet, BoardColor);
         ("Välkommen!").CW(15, 4, TextColor);
                      
@@ -63,6 +59,13 @@ public class StartUp
 
         (strLeftBottomCorner + strHorisontell + strRightBottomCorner).CW(xSheet, ySheet + 15, BoardColor);     
     }   // end of CreateFront()
+
+    public void Utseende(int boardsize)
+    {
+        Console.SetWindowSize(boardsize * 13, boardsize * 7);
+        Console.BackgroundColor = ConsoleColor.DarkBlue;
+        Console.Clear();
+    }   // end of Utseende()
 
     public void GetNames(bool onePlayer)
     {

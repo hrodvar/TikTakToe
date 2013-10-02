@@ -31,4 +31,4 @@ public static class Extensions
         Console.SetCursorPosition(xPosition, yPosition);
         Console.Write(strValue);
     }   // end of CW()
-}
+}   // end of class Extensions

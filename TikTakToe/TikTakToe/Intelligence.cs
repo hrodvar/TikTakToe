@@ -29,7 +29,7 @@ public class Intelligence
     // constructor
     public Intelligence()
     {
-        
+
     }   // end of Intelligence()
     // end of constructor
 
@@ -69,7 +69,7 @@ public class Intelligence
                 counter++;
             else
                 counter = 0;
-        }
+        }   // end of if
         return match;
     }   // end of IntelligenceCalculator()
 
@@ -91,14 +91,14 @@ public class Intelligence
                     foreach (int num in array)
                     {
                         list.Add(num);
-                    }
+                    }   // end of foreach
                     //do
                     //{
                         i = (array[i + list.IndexOf(listCounter)] == array[i] + 1) ? i += 1 : 0;
                         
 
                     //} while ();
-                }
+                }   // end of if
                     i = (array[i + 1] == array[i] + 1) ? i += 1 : 0;
                 Winner = i != 0 ? true : false;
                 Counter = Counter >= WinnerPoints ? 0 : Counter++;

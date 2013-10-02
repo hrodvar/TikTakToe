@@ -25,4 +25,8 @@ public class Player
         PlayerName = name;
         Symbol = symbol;
     }
+    // end of constructor
+
+    // methods
+    // end of methods
 }

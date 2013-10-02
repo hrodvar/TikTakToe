@@ -25,25 +25,15 @@ class Program
     // Constructor
     static void Main(string[] args)
     {
-        
-
         StartUp startUp = new StartUp();
-        
         do
         {
             Game game = new Game(startUp.BoardSize, startUp.Human, startUp.Computer); 
         } while (Run(startUp.Human, startUp.Computer));
-        
     }
     // end of constructor
 
     // methods
-    static void utseende(int boardSize)
-    {
-        Console.SetWindowSize(boardSize * 13, boardSize * 7);
-        Console.BackgroundColor = ConsoleColor.DarkBlue;
-        Console.Clear();
-    }   // end of utseende()
 
     static bool Run(Player human, Player computer)
     {
@@ -67,4 +57,5 @@ class Program
     }   //  end of Run()
 
     // end of methods
-}
+
+}   // end of class Program

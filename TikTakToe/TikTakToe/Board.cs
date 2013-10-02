@@ -34,7 +34,7 @@ public class Board
     {
         CreateBoard(boardSize);
     }
-    // end ofconstructor
+    // end of constructor
 
     public void CreateBoard(int boardSize)
     {
@@ -59,12 +59,12 @@ public class Board
                 (strLeftTopCorner + strHorisontell + strTopColumnSeperator + strHorisontell + 
                     strTopColumnSeperator + strHorisontell + strRightTopCorner).
                     CW(xSheet, ySheet, BoardColor
-                );
+                );  // end of CW()
             else
                 (strMiddelLeftColumnSeperator + strHorisontell + strMiddelColumnSeperator + 
                     strHorisontell + strMiddelColumnSeperator + strHorisontell + 
                     strMiddelRightColumnSeperator).CW(xSheet, ySheet, BoardColor
-                );
+                );  // end of CW()
             Console.SetCursorPosition(xColumn, ySheet + 1);
             for (int x = 0; x < (BoardSize  + 1); x++)
             {
@@ -79,15 +79,14 @@ public class Board
             ySheet += 4;
         }   // end of for
         (strLeftBottomCorner + strHorisontell + strBottomColumnSeperator + strHorisontell + 
-            strBottomColumnSeperator + strHorisontell + strRightBottomCorner).
-            CW(xSheet, ySheet, BoardColor
-        );
+            strBottomColumnSeperator + strHorisontell + strRightBottomCorner).CW(xSheet, ySheet, BoardColor
+        );  // end of CW()
         int writeInstructionValue = 0;
         for (int i = 1; i < 10; i++)
         {
             writeInstructionValue = Play(Convert.ToChar(i.ToString()), 
                 Convert.ToChar(i.ToString()), InstructionColor);
-        }
+        }   // end of for
     }   // end of CreateBoard()
 
     public int Play(char c, char symbol, string color)
