@@ -32,39 +32,79 @@ public class Game
         int i = 0;
         do
         {
-            Array.Resize<int>(ref human.PlayerMoves, i + 1);
-            Array.Resize<int>(ref computer.PlayerMoves, i + 1);
-            do
-            {
-                human.PlayerMoves[i] = (!human.PlayerMoves.Contains(i + 1) && !computer.PlayerMoves.Contains(i + 1)) ?
-                    board.Play(Console.ReadKey(true).KeyChar, human.Symbol, board.SymbolColor) : 99;
-            } while (computer.PlayerMoves[i] != 99);
-            //human.PlayerMoves[i] = board.Play(Console.ReadKey(true).KeyChar, human.Symbol, board.SymbolColor);
-            if (GameSituation(human.PlayerName,intelligence.IntelligenceCalculator(human.PlayerMoves)))
-                gameSituation = true;
-            else
+            if (!(gameSituation = PlayValue(human, computer.PlayerMoves, board, i)))
                 break;
-            //computer.PlayerMoves[i] = board.Play(Console.ReadKey(true).KeyChar, computer.Symbol, board.SymbolColor);
-            do
-            {
-                computer.PlayerMoves[i] = (!human.PlayerMoves.Contains(i + 1) && !computer.PlayerMoves.Contains(i + 1)) ?
-                   board.Play(Console.ReadKey(true).KeyChar, computer.Symbol, board.SymbolColor) : 99;
-            } while (computer.PlayerMoves[i] != 99);
-            if (GameSituation(computer.PlayerName, intelligence.IntelligenceCalculator(computer.PlayerMoves)))
-                gameSituation = true;
-            else
+
+            if (!(gameSituation = PlayValue(computer, human.PlayerMoves, board, i)))
                 break;
             i++;
         } while (gameSituation);
-        //    Turn(thomas);
-        //    GameResult(Winner(board.Play(Console.ReadKey(true).KeyChar, thomas.Symbol), thomas));
-        //    Turn(johan);
-        //    GameResult(Winner(board.Play(Console.ReadKey(true).KeyChar, johan.Symbol), johan));
-        //} while(true);
     }   // end of Game()
     // end of constructor
 
     // methods
+
+    public bool PlayValue(Player player, int[] competitor, Board board, int i)
+    {
+        bool gameSituation = true;
+        Intelligence intelligence = new Intelligence();
+        //if(player.PlayerMoves.Count() != 1)
+            Array.Resize<int>(ref player.PlayerMoves, i + 1);
+        int value = 0;
+        char choose = ' ';
+        do
+        {
+            choose = Console.ReadKey(true).KeyChar;
+            value = (int)Char.GetNumericValue(choose);
+            foreach (int valuePlayer in player.PlayerMoves)
+            {
+                if (valuePlayer == value)
+                {
+                    gameSituation = false;
+                    break;
+                }
+                else
+                {
+                    if (competitor.Length == 0)
+                    {
+                        //board.Play(choose, player.Symbol, board.SymbolColor);
+                        gameSituation = true;
+                        //break;
+                    }
+                    else
+                    {
+                        foreach (int valueCompetitor in competitor)
+                        {
+                            if (valueCompetitor == value)
+                            {
+                                gameSituation = false;
+                                break;
+                            }
+                            else
+                            {
+                                //board.Play(choose, player.Symbol, board.SymbolColor);
+                                gameSituation = true;
+                                //break;
+                            }
+                        }
+                    }
+                    
+                    //break;
+                }
+            }
+        }
+        while (!gameSituation);
+
+        gameSituation = true;
+        player.PlayerMoves[i] = value;
+        if (GameSituation(player.PlayerName, intelligence.IntelligenceCalculator(player.PlayerMoves)))
+            gameSituation = true;
+        else
+            gameSituation = false;
+        
+        return gameSituation;
+    }   // end of PlayValue()
+
     public bool GameSituation(string name, bool gameSituation)
     {
         if (gameSituation)
