@@ -111,19 +111,9 @@ public class Game
         string name = Player.PlayerName;
 
         if (name.EndsWith("s"))
-        {
             ("Det är: " + name + " (" + Player.Symbol + ") " + "Tur att spela!").CW(5, 4, "Green");
-        }
         else
             ("Det är: " + name + " (" + Player.Symbol + ") " + "s Tur att spela!").CW(5, 4, "Green");
-       
-        /* int i = name.Length;
-        char[] nameArrey = name.ToCharArray();
-
-        if (nameArrey[i - 1] != 's')
-            name = name + "s";
-        ("Det är: " + name + " (" + Player.Symbol + ") " + "Tur att spela!").CW(5, 4, "Green");*/
-
     }   // end of Turn()
 
     // end of methods

@@ -80,7 +80,10 @@ public class StartUp
             Console.SetCursorPosition(21, 12);
             Computer = new Player(Console.ReadLine(), 'O');
         }   // end of if
-        //else player is computer!
+        else
+        {
+            Computer = new Player("Computer", 'O');
+        }
         Console.Clear();
     }   // end of GetNames()
         
