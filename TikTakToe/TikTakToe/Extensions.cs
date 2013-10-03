@@ -17,18 +17,54 @@ using System.Threading.Tasks;
 
 public static class Extensions
 {
-    public static void CW(this string strValue, int xPosition = 0, int yPosition = 0, string color = "White")
+    public static void CW(this string strValue, int xPosition = 0, int yPosition = 0,
+        string forgroundColor = "White", string backgroundColor = "Black")
     {
         String[] colorNames = ConsoleColor.GetNames(typeof(ConsoleColor));
-        foreach (string colorName in colorNames)
-            if (colorName == color)
+        foreach (string forgroundColorName in colorNames)
+            if (forgroundColorName == forgroundColor)
             {
-                ConsoleColor newColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), colorName);
-                Console.ForegroundColor = newColor;
+                ConsoleColor newForgroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), forgroundColorName);
+                Console.ForegroundColor = newForgroundColor;
                 break;
-            }   // end of if       
+            }   // end of if   
+
+        foreach (string backgroundColorName in colorNames)
+            if (backgroundColorName == backgroundColor)
+            {
+                ConsoleColor newBackgroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), backgroundColorName);
+                Console.BackgroundColor = newBackgroundColor;
+                break;
+            }   // end of if 
 
         Console.SetCursorPosition(xPosition, yPosition);
         Console.Write(strValue);
     }   // end of CW()
+
+    public static string CR(this string strValue, int xPosition = 0, int yPosition = 0,
+        string forgroundColor = "White", string backgroundColor = "Black")
+    {
+        String[] colorNames = ConsoleColor.GetNames(typeof(ConsoleColor));
+        foreach (string forgroundColorName in colorNames)
+            if (forgroundColorName == forgroundColor)
+            {
+                ConsoleColor newForgroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), forgroundColorName);
+                Console.ForegroundColor = newForgroundColor;
+                break;
+            }   // end of if   
+
+        foreach (string backgroundColorName in colorNames)
+            if (backgroundColorName == backgroundColor)
+            {
+                ConsoleColor newBackgroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), backgroundColorName);
+                Console.BackgroundColor = newBackgroundColor;
+                break;
+            }   // end of if 
+
+        Console.SetCursorPosition(xPosition, yPosition);
+
+        strValue = Console.ReadLine();
+        return strValue;
+    }   // end of CR()
+
 }   // end of class Extensions

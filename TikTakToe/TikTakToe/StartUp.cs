@@ -25,8 +25,10 @@ public class StartUp
     public bool AIPhilip { get; set; }
     public bool AIXin    { get; set; }
     public int BoardSize = 3;
-    public string BoardColor = "Yellow";
+    public string TableColor = "DarkBlue";
+    public string FramesColor = "Yellow";
     public string TextColor = "Yellow";
+    public string InputTextColor = "Red";
     public List<string> Alternativ = new List<string>() {"Player", "Mikael", "Fatos", "Philip", "Xin", "Hroi" };
     public Player Human { get; set; }
     public Player Computer { get; set; }
@@ -54,20 +56,20 @@ public class StartUp
 
         Utseende(boardsize);
 
-        (strLeftTopCorner + strHorisontell + strRightTopCorner).CW(xSheet, ySheet, BoardColor);
-        ("Välkommen!").CW(15, 4, TextColor);
+        (strLeftTopCorner + strHorisontell + strRightTopCorner).CW(xSheet, ySheet, FramesColor, TableColor);
                      
         for (int l = 0; l < 14; l++)
         {
-            (strVertikal).CW(xSheet, ySheet + 1 +l, BoardColor);
-            (strVertikal).CW(xSheet + 31, ySheet + 1+ l, BoardColor);
+            (strVertikal).CW(xSheet, ySheet + 1 + l, FramesColor, TableColor);
+            (strVertikal).CW(xSheet + 31, ySheet + 1 + l, FramesColor, TableColor);
         }   // end of for
 
-        (strLeftBottomCorner + strHorisontell + strRightBottomCorner).CW(xSheet, ySheet + 15, BoardColor);     
+        (strLeftBottomCorner + strHorisontell + strRightBottomCorner).CW(xSheet, ySheet + 15, FramesColor, TableColor);     
     }   // end of CreateFront()
 
     public void Utseende(int boardsize)
     {
+        Console.Title = "TikTakToe";
         Console.SetWindowSize(boardsize * 13, boardsize * 7);
         Console.BackgroundColor = ConsoleColor.DarkBlue;
         Console.Clear();
@@ -76,16 +78,13 @@ public class StartUp
     public void GetNames(bool onePlayer, int i)
     {
         CreateFront(BoardSize);   
-        ("Spelare1 namn: ").CW(6, 8, TextColor);
-        Console.SetCursorPosition(21,8);
-
-        Human = new Player(Console.ReadLine(), 'X');
+        ("Player 1: ").CW(15, 8, TextColor, TableColor);
+        Human = new Player((" ").CR(15, 9, InputTextColor, TableColor), 'X');
         if (!onePlayer)
         {
             AI = false;
-            ("Spelare2 namn:").CW(6, 12, TextColor);
-            Console.SetCursorPosition(21, 12);
-            Computer = new Player(Console.ReadLine(), 'O');
+            ("Player 2:").CW(15, 11, TextColor, TableColor);
+            Computer = new Player((" ").CR(15, 12, InputTextColor, TableColor), 'O');
         }   // end of if
         else
         {
@@ -111,13 +110,13 @@ public class StartUp
     public void MenylList()
     {
         CreateFront(BoardSize);
-        ("Till våran TicTacToe!").CW(10, 6, TextColor);
+        ("Velcome to TicTacToe!").CW(10, 5, TextColor, TableColor);
 
         for (int i = 0; i < Alternativ.Count; i++)
         {   
-            (i + 1 + ". " +  Alternativ[0] + " Vs " + Alternativ[i]  ).CW(6, i + 8, TextColor);
+            (i + 1 + ". " +  Alternativ[0] + " Vs " + Alternativ[i]  ).CW(6, i + 8, TextColor, TableColor);
             if(i != 0)
-                ("- AI").CW(30, i + 8,TextColor);
+                ("- AI").CW(30, i + 8,TextColor, TableColor);
         }   // end of for
         AltVal();
         Console.Clear();

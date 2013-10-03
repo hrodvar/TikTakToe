@@ -23,7 +23,8 @@ public class Board
     public int[] YPosition = new int[] { 7, 11, 15 };
     public int XPlayerPosition { get; set; }
     public int YPlayerPosition { get; set; }
-    public string BoardColor = "Yellow";
+    public string FramesColor = "Yellow";
+    public string TableColor = "DarkBlue";
     public string PlayerColor = "Red";
     public string SymbolColor = "Green";
     public string InstructionColor = "Gray";
@@ -58,19 +59,19 @@ public class Board
             if (i == 0)
                 (strLeftTopCorner + strHorisontell + strTopColumnSeperator + strHorisontell + 
                     strTopColumnSeperator + strHorisontell + strRightTopCorner).
-                    CW(xSheet, ySheet, BoardColor
+                    CW(xSheet, ySheet, FramesColor, TableColor
                 );  // end of CW()
             else
                 (strMiddelLeftColumnSeperator + strHorisontell + strMiddelColumnSeperator + 
-                    strHorisontell + strMiddelColumnSeperator + strHorisontell + 
-                    strMiddelRightColumnSeperator).CW(xSheet, ySheet, BoardColor
+                    strHorisontell + strMiddelColumnSeperator + strHorisontell +
+                    strMiddelRightColumnSeperator).CW(xSheet, ySheet, FramesColor, TableColor
                 );  // end of CW()
             Console.SetCursorPosition(xColumn, ySheet + 1);
             for (int x = 0; x < (BoardSize  + 1); x++)
             {
-                (strVertikal).CW(xColumn, ySheet + 1, BoardColor);
-                (strVertikal).CW(xColumn, ySheet + 2, BoardColor);
-                (strVertikal).CW(xColumn, ySheet + 3, BoardColor);
+                (strVertikal).CW(xColumn, ySheet + 1, FramesColor, TableColor);
+                (strVertikal).CW(xColumn, ySheet + 2, FramesColor, TableColor);
+                (strVertikal).CW(xColumn, ySheet + 3, FramesColor, TableColor);
                 if (x == BoardSize)
                     xColumn = 5;
                 else
@@ -78,8 +79,9 @@ public class Board
             }   // end of for
             ySheet += 4;
         }   // end of for
-        (strLeftBottomCorner + strHorisontell + strBottomColumnSeperator + strHorisontell + 
-            strBottomColumnSeperator + strHorisontell + strRightBottomCorner).CW(xSheet, ySheet, BoardColor
+        (strLeftBottomCorner + strHorisontell + strBottomColumnSeperator + strHorisontell +
+            strBottomColumnSeperator + strHorisontell + strRightBottomCorner).CW(xSheet, ySheet, 
+            FramesColor, TableColor
         );  // end of CW()
         int writeInstructionValue = 0;
         for (int i = 1; i < 10; i++)
@@ -110,18 +112,19 @@ public class Board
 
     public void WritePosition(char symbol, string color)
     {
-        (symbol.ToString()).CW(XPlayerPosition, YPlayerPosition, color);
+        (symbol.ToString()).CW(XPlayerPosition, YPlayerPosition, color, TableColor);
     }   // end of WritePossition()
 
     public void PlayerInformation(string player1, char player1Symbol, string player2, char player2Symbol)
     {
         player1 = player1.Length > 8 ? player1.Substring(0, 8) : player1;
         player2 = player2.Length > 8 ? player2.Substring(0, 8) : player2;
-        (player1).CW(5, 2, PlayerColor);
-        ("har").CW(14, 2, PlayerColor);
-        (player1Symbol.ToString()).CW(19, 2, SymbolColor);
-        (player2).CW(5, 3, PlayerColor);
-        ("har").CW(14, 3, PlayerColor);
-        (player2Symbol.ToString()).CW(19, 3, SymbolColor);
+        (player1).CW(5, 2, PlayerColor, TableColor);
+        ("har").CW(14, 2, PlayerColor, TableColor);
+        (player1Symbol.ToString()).CW(19, 2, SymbolColor, TableColor);
+        (player2).CW(5, 3, PlayerColor, TableColor);
+        ("har").CW(14, 3, PlayerColor, TableColor);
+        (player2Symbol.ToString()).CW(19, 3, SymbolColor, TableColor
+);
     }   // end of PlayerInformation()
 }   // end of class Board

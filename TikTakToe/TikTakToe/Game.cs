@@ -16,7 +16,9 @@ using System.Linq;
 public class Game
 {
     // properties
+    public string TableColor = "DarkBlue";
     public string WinnerColor = "Green";
+    public string InstructionColor = "Gray";
     public bool AI { get; set; }
     // end of properties
 
@@ -89,21 +91,27 @@ public class Game
 
         gameSituation = true;
         player.PlayerMoves[i] = value;
-        if (GameSituation(player.PlayerName, intelligence.IntelligenceCalculator(player.PlayerMoves)))
+        if (GameSituation(player, intelligence.IntelligenceCalculator(player.PlayerMoves), 
+            board, intelligence.WinningsLine))
             gameSituation = true;
         else
             gameSituation = false;
         return gameSituation;
     }   // end of PlayValue()
 
-    public bool GameSituation(string name, bool gameSituation)
+    public bool GameSituation(Player player, bool gameSituation, Board board, int[] array)
     {
         if (gameSituation)
         {
-            (name + " is a winner!").CW(0, 0, WinnerColor);
+            (player.PlayerName + " is a winner!").CW(11, 18, WinnerColor, TableColor);
+            ("Press enter to continue").CW(9, 20, InstructionColor, TableColor);
+            foreach (int value in array)
+            {
+                board.Play(Convert.ToChar(value.ToString()), player.Symbol, "Red");
+            }
             return false;
         }   // end of if
-        else
+        else 
             return true;
     }   // end of GameSituation()
 
@@ -114,10 +122,10 @@ public class Game
         if (name.EndsWith("s"))
 
         {
-            ("Det är: " + name + " (" + Player.Symbol + ") " + "tur att spela!").CW(5, 4, "Green");
+            ("Det är: " + name + " (" + Player.Symbol + ") " + "tur att spela!").CW(5, 4, WinnerColor, TableColor);
         }
         else
-            ("Det är: " + name + " (" + Player.Symbol + ") " + "s tur att spela!").CW(5, 4, "Green");       
+            ("Det är: " + name + " (" + Player.Symbol + ") " + "s tur att spela!").CW(5, 4, WinnerColor, TableColor);       
         
     }   // end of Turn()
 
