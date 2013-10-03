@@ -69,7 +69,7 @@ public class StartUp
 
     public void GetNames(bool onePlayer)
     {
-        CreateFront(BoardSize);
+        CreateFront(BoardSize);   
         ("Spelare1 namn: ").CW(6, 8, TextColor);
         Console.SetCursorPosition(21,8);
 
@@ -80,6 +80,7 @@ public class StartUp
             Console.SetCursorPosition(21, 12);
             Computer = new Player(Console.ReadLine(), 'O');
         }   // end of if
+        //else player is computer!
         Console.Clear();
     }   // end of GetNames()
         
