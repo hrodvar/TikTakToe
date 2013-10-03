@@ -63,35 +63,28 @@ public class Game
             value = (int)Char.GetNumericValue(choose);
             foreach (int valuePlayer in player.PlayerMoves)
             {
-                if (valuePlayer == value)
+                if (value == valuePlayer)
                 {
                     gameSituation = false;
                     break;
-                }   // end of if
-                else if (competitor.Length == 0)
-                {
-                    board.Play(choose, player.Symbol, board.SymbolColor);
-                    gameSituation = true;
-                    break;
-                }   // end of else if 
+                }   // end of if 
                 else
                 {
                     foreach (int valueCompetitor in competitor)
                     {
-                        if (valueCompetitor == value)
+                        if (value == valueCompetitor)
                         {
                             gameSituation = false;
                             break;
                         }   // end of if
                         else
-                        {
-                            board.Play(choose, player.Symbol, board.SymbolColor);
                             gameSituation = true;
-                            break;
-                        }   // end of else
                     }   // end of foreach
                 }   // end of else
             }   // end of foreach
+
+            if (gameSituation)
+                board.Play(choose, player.Symbol, board.SymbolColor);
         } while (!gameSituation);
 
         gameSituation = true;
