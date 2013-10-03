@@ -112,10 +112,10 @@ public class Game
 
         if (name.EndsWith("s"))
         {
-            ("Det är: " + name + " (" + Player.Symbol + ") " + "Tur att spela!").CW(5, 4, "Green");
+            ("Det är: " + name + " (" + Player.Symbol + ") " + "tur att spela!").CW(5, 4, "Green");
         }
         else
-            ("Det är: " + name + " (" + Player.Symbol + ") " + "s Tur att spela!").CW(5, 4, "Green");
+            ("Det är: " + name + " (" + Player.Symbol + ") " + "s tur att spela!").CW(5, 4, "Green");
        
         /* int i = name.Length;
         char[] nameArrey = name.ToCharArray();
