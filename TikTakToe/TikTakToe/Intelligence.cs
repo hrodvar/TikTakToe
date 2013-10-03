@@ -53,10 +53,33 @@ public class Intelligence
         if (array.Length > 2)
         {
             match = false;
-            match = Rule1(array) || Rule2(array) || Rule3(array) || Rule4(array) ? true : false;
+            match = PhilipRules(array);
+            //match = Rule1(array) || Rule2(array) || Rule3(array) || Rule4(array) ? true : false;
         }   // end of if
         return match;
     }   // end of IntelligenceCalculator()
+
+    public bool PhilipRules(int[] array)
+    {
+        Array.Sort(array);
+        string numbers = string.Empty;
+        for (int i = 0; i < array.Length; i++)
+        {
+            numbers += array[i].ToString();
+        }
+        if (numbers.Contains("123") ||
+            numbers.Contains("456") ||
+            numbers.Contains("789") ||
+            (numbers.Contains("1") && numbers.Contains("4") && numbers.Contains("7")) ||
+            (numbers.Contains("2") && numbers.Contains("5") && numbers.Contains("8")) ||
+            (numbers.Contains("3") && numbers.Contains("6") && numbers.Contains("9")) ||
+            (numbers.Contains("1") && numbers.Contains("5") && numbers.Contains("9")) ||
+            (numbers.Contains("3") && numbers.Contains("5") && numbers.Contains("7")))
+        {
+            return true;
+        }
+        return false;
+    }
 
     public bool Rule1(int[] array)
         // Role that check if number + 1 is the same 

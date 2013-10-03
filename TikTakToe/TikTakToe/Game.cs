@@ -61,6 +61,10 @@ public class Game
             
             // test if user choose used window!
             value = (int)Char.GetNumericValue(choose);
+            if (value < 1 || value > 9)
+            {
+                continue;
+            }
             foreach (int valuePlayer in player.PlayerMoves)
             {
                 if (value == valuePlayer)
