@@ -28,7 +28,7 @@ class Program
         StartUp startUp = new StartUp();
         do
         {
-            Game game = new Game(startUp.BoardSize, startUp.Human, startUp.Computer); 
+            Game game = new Game(startUp.BoardSize, startUp.Human, startUp.Computer, startUp.AI); 
         } while (Run(startUp.Human, startUp.Computer));
     }
     // end of constructor

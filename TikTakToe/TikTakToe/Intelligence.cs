@@ -52,23 +52,8 @@ public class Intelligence
         bool match = false;
         if (array.Length > 2)
         {
-            //match = false;
-            Array.Sort(array);
-            int counter = 0;
-            Rounds = 0;
-            int i = array[0];
-            switch (i)
-            {
-                case 1: { match = Rule1(array) || Rule3(array) || Rule4(array) ? true : false; break; }
-                case 2: { match = Rule3(array) ? true : false; break; }
-                case 3: { match = Rule2(array) || Rule3(array) ? true : false; break; }
-                case 4: { match = Rule1(array) ? true : false; break; }
-                case 7: { match = Rule1(array) ? true : false; break; }
-            }   // end of switch
-            if (match)
-                counter++;
-            else
-                counter = 0;
+            match = false;
+            match = Rule1(array) || Rule2(array) || Rule3(array) || Rule4(array) ? true : false;
         }   // end of if
         return match;
     }   // end of IntelligenceCalculator()
@@ -79,35 +64,30 @@ public class Intelligence
         //      ___ ___ ___
         // formel: [index + 1] = [index] + 1;
     {
-        List<int> list = new List<int>();
+        Array.Sort(array);
         int i = 0;
+        bool test1 = false;
         try
         {
-            do
-            {
-                if (array.Length > 3)
+            int winnerCounter = 0;
+            do{
+                if (array[i] == 1 || array[i] == 4 || array[i] == 7)
+                    test1 = true;
+                if (array[i + 1] == array[i] + 1 && test1)
                 {
-                    int listCounter = 0;
-                    foreach (int num in array)
+                    winnerCounter++;
+                    if (winnerCounter == 2)
                     {
-                        list.Add(num);
-                    }   // end of foreach
-                    //do
-                    //{
-                        i = (array[i + list.IndexOf(listCounter)] == array[i] + 1) ? i += 1 : 0;
-                        
-
-                    //} while ();
-                }   // end of if
-                    i = (array[i + 1] == array[i] + 1) ? i += 1 : 0;
-                Winner = i != 0 ? true : false;
-                Counter = Counter >= WinnerPoints ? 0 : Counter++;
-                Rounds++;
-            } while (array.Length != Rounds);
-            Counter = 0;
+                        Winner = true;
+                        break;
+                    }
+                    else
+                        Winner = false;
+                }
+                i++;
+            } while (winnerCounter != 2 || i != array.Length - 1);
         }   // end of try
-        catch { Rounds = 0; }
-        Rounds = 0;
+        catch { test1 = false; Winner = false; }
         return Winner; 
     }   // end of Rule1()
 
@@ -119,20 +99,33 @@ public class Intelligence
         //    /
         // formel: [index + (NumberOfBoxes - 1)] = [index] + (NumberOfBoxes - 1)
     {
+        Array.Sort(array);
         int i = 0;
+        bool test2 = false;
         try
         {
+            int winnerCounter = 0;
             do
-            {    // 3, 5, 7index (0 + (3-1)) = 2 (vale = 7);  index(0) = 3; + (3-1)  = 3 + 2 = 5                
-                i = (array[i + 1] == array[i] + (NumberOfBoxes - 1)) ? i += (NumberOfBoxes - 1) : 0;
-                Winner = i != 0 ? true : false;
-                Counter = Counter >= WinnerPoints ? 0 : Counter++;
-                Rounds++;
-            } while (array.Length != Rounds);
-            Counter = 0;
+            {
+                if (array[i] == 3)
+                    test2 = true;
+                if (array[i + 1] == array[i] + (NumberOfBoxes - 1) && test2)
+                {
+                    winnerCounter++;
+                    if (winnerCounter == 2)
+                    {
+                        Winner = true;
+                        break;
+                    }
+                    else
+                        Winner = false;
+                }
+                i++;
+                
+            } while (winnerCounter != 2 || i != array.Length - 1);
+
         }   // end of try
-        catch { Rounds = 0; }
-        Rounds = 0;
+        catch { test2 = false; Winner = false;  }
         return Winner; 
     }   // end of Rule2()
     
@@ -144,20 +137,31 @@ public class Intelligence
         //      |
         // formel: [index + NumberOfBoxes] = [index] + NumberOfBoxes;
     {
+        Array.Sort(array);
         int i = 0;
+        bool test3 = false;
         try
         {
+            int winnerCounter = 0;
             do
-            {   // index(0 + 3) 
-                i = (array[i + 1] == array[i] + NumberOfBoxes) ? i += NumberOfBoxes : 0;
-                Winner = i != 0 ? true : false;
-                Counter = Counter >= WinnerPoints ? 0 : Counter++;
-                Rounds++;
-            } while (array.Length != Rounds);
-            Counter = 0;
+            {
+                if (array[i] == 1 || array[i] == 2 || array[i] == 3)
+                    test3 = true;
+                if (array[i + 1] == array[i] + (NumberOfBoxes) && test3)
+                {
+                    winnerCounter++;
+                    if (winnerCounter == 2)
+                    {
+                        Winner = true;
+                        break;
+                    }
+                    else
+                        Winner = false;
+                }
+                i++;
+            } while (winnerCounter != 2 || i != array.Length - 1);
         }   // end of try
-        catch { Rounds = 0; }
-        Rounds = 0;
+        catch { test3 = false; Winner = false; }
         return Winner; 
     }   // end of Rule3()
 
@@ -169,20 +173,31 @@ public class Intelligence
         //        \
         // formel: [index + (NumberOfBoxes + 1)] = [index] + (NumberOfBoxes +)
     {
+        Array.Sort(array);
         int i = 0;
+        bool test4 = false;
         try
         {
+            int winnerCounter = 0;
             do
-            {   // 1, 5, 9; index(0 + 2
-                i = (array[i + 1] == array[i] + (NumberOfBoxes + 1)) ? i += (NumberOfBoxes + 1) : 0;
-                Winner = i != 0 ? true : false;
-                Counter = Counter >= WinnerPoints ? 0 : Counter++;
-                Rounds++;
-            } while (array.Length != Rounds);
-            Counter = 0;
+            {
+                if (array[i] == 1)
+                    test4 = true;
+                if (array[i + 1] == array[i] + (NumberOfBoxes + 1) && test4)
+                {
+                    winnerCounter++;
+                    if (winnerCounter == 2)
+                    {
+                        Winner = true;
+                        break;
+                    }
+                    else
+                        Winner = false;
+                }
+                i++;
+            } while (winnerCounter != 2 || i != array.Length - 1);
         }   // end of try
-        catch { Rounds = 0; }
-        Rounds = 0;
+        catch { test4 = false; Winner = false;  }
         return Winner; 
     }   // end of Rule4()
 

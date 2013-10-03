@@ -18,10 +18,16 @@ using System.Threading.Tasks;
 public class StartUp
 {
     // properties
+    public bool AI       { get; set; }
+    public bool AIHroi   { get; set; }
+    public bool AIMikael { get; set; }
+    public bool AIFatos  { get; set; }
+    public bool AIPhilip { get; set; }
+    public bool AIXin    { get; set; }
     public int BoardSize = 3;
     public string BoardColor = "Yellow";
     public string TextColor = "Yellow";
-    public List<string> Alternativ = new List<string>() {"Player", "Mikael", "Fatos", "Philip", "Xin", "Hrodvar" };
+    public List<string> Alternativ = new List<string>() {"Player", "Mikael", "Fatos", "Philip", "Xin", "Hroi" };
     public Player Human { get; set; }
     public Player Computer { get; set; }
     // end of properties
@@ -67,7 +73,7 @@ public class StartUp
         Console.Clear();
     }   // end of Utseende()
 
-    public void GetNames(bool onePlayer)
+    public void GetNames(bool onePlayer, int i)
     {
         CreateFront(BoardSize);   
         ("Spelare1 namn: ").CW(6, 8, TextColor);
@@ -76,6 +82,7 @@ public class StartUp
         Human = new Player(Console.ReadLine(), 'X');
         if (!onePlayer)
         {
+            AI = false;
             ("Spelare2 namn:").CW(6, 12, TextColor);
             Console.SetCursorPosition(21, 12);
             Computer = new Player(Console.ReadLine(), 'O');
@@ -83,10 +90,24 @@ public class StartUp
         else
         {
             Computer = new Player("Computer", 'O');
+            AI = true;
+            AIPlayer(i);
         }
         Console.Clear();
     }   // end of GetNames()
-        
+    
+    public void AIPlayer(int i)
+    {
+        switch (i)
+        {
+            case 2: { AIMikael = true; break; }
+            case 3: { AIFatos  = true; break; }
+            case 4: { AIPhilip = true; break; }
+            case 5: { AIXin    = true; break; }
+            case 6: { AIHroi   = true; break; }
+        }   // end of switch
+    }  // end of AIPlayer()  
+
     public void MenylList()
     {
         CreateFront(BoardSize);
@@ -94,8 +115,9 @@ public class StartUp
 
         for (int i = 0; i < Alternativ.Count; i++)
         {   
-                (i+1 + ". " +  Alternativ[0] + " Vs " + Alternativ[i]  ).CW(6, i+8, TextColor);
-                if(i !=0)("-AI").CW(31, i+8,TextColor);
+            (i + 1 + ". " +  Alternativ[0] + " Vs " + Alternativ[i]  ).CW(6, i + 8, TextColor);
+            if(i != 0)
+                ("- AI").CW(30, i + 8,TextColor);
         }   // end of for
         AltVal();
         Console.Clear();
@@ -107,12 +129,12 @@ public class StartUp
            
         switch (key)
         {
-            case '1': { GetNames(false);break; }
-            case '2': { GetNames(true); break; }
-            case '3': { GetNames(true); break; }
-            case '4': { GetNames(true); break; }
-            case '5': { GetNames(true); break; }
-            case '6': { GetNames(true); break; }
+            case '1': { GetNames(false, 1);break; }
+            case '2': { GetNames(true,  2); break; }
+            case '3': { GetNames(true,  3); break; }
+            case '4': { GetNames(true,  4); break; }
+            case '5': { GetNames(true,  5); break; }
+            case '6': { GetNames(true,  6); break; }
         }   // end of switch
     }   // end of AltVal()
 

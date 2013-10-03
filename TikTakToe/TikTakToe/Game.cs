@@ -17,12 +17,13 @@ public class Game
 {
     // properties
     public string WinnerColor = "Green";
-    public char[] WinningNumbers = {'l','k','j','h','g','f','d','s','a',};
+    public bool AI { get; set; }
     // end of properties
 
     // constructor
-    public Game(int boardSize, Player human, Player computer)
+    public Game(int boardSize, Player human, Player computer, bool ai)
     {
+        AI = ai;
         bool gameSituation = true;
         Board board = new Board(boardSize);
         Intelligence intelligence = new Intelligence();
@@ -45,13 +46,20 @@ public class Game
     {
         bool gameSituation = true;
         Intelligence intelligence = new Intelligence();
-        //if(player.PlayerMoves.Count() != 1)
-            Array.Resize<int>(ref player.PlayerMoves, i + 1);
+        Array.Resize<int>(ref player.PlayerMoves, i + 1);
         int value = 0;
         char choose = ' ';
         do
         {
-            choose = Console.ReadKey(true).KeyChar;
+            // AI is true player is competing with the computer.
+            // then 'choose' take value from the AI else from player 2.
+            if (AI)
+                choose = ' ';// take the value from the AI!
+            else
+
+                choose = Console.ReadKey(true).KeyChar;
+            
+            // test if user choose used window!
             value = (int)Char.GetNumericValue(choose);
             foreach (int valuePlayer in player.PlayerMoves)
             {

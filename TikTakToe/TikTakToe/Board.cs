@@ -115,11 +115,13 @@ public class Board
 
     public void PlayerInformation(string player1, char player1Symbol, string player2, char player2Symbol)
     {
+        player1 = player1.Length > 8 ? player1.Substring(0, 8) : player1;
+        player2 = player2.Length > 8 ? player2.Substring(0, 8) : player2;
         (player1).CW(5, 2, PlayerColor);
-        ("har").CW(12, 2, PlayerColor);
-        (player1Symbol.ToString()).CW(17, 2, SymbolColor);
+        ("har").CW(14, 2, PlayerColor);
+        (player1Symbol.ToString()).CW(19, 2, SymbolColor);
         (player2).CW(5, 3, PlayerColor);
-        ("har").CW(12, 3, PlayerColor);
-        (player2Symbol.ToString()).CW(17, 3, SymbolColor);
+        ("har").CW(14, 3, PlayerColor);
+        (player2Symbol.ToString()).CW(19, 3, SymbolColor);
     }   // end of PlayerInformation()
 }   // end of class Board
