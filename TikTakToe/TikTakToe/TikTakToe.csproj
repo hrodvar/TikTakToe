@@ -46,6 +46,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Intelligence.cs" />
+    <Compile Include="MikaelsAI2.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
