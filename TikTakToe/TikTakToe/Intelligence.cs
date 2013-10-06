@@ -54,12 +54,35 @@ public class Intelligence
         if (array.Length > 2)
         {
             match = false;
-            match = Rule1(array) || Rule2(array) || Rule3(array) || Rule4(array) ? true : false;
+            match = PhilipRules(array);
+            //match = Rule1(array) || Rule2(array) || Rule3(array) || Rule4(array) ? true : false;
         }   // end of if
         return match;
     }   // end of IntelligenceCalculator()
 
-    
+
+    public bool PhilipRules(int[] array)
+    {
+        Array.Sort(array);
+        string numbers = string.Empty;
+        for (int i = 0; i < array.Length; i++)
+        {
+            numbers += array[i].ToString();
+        }
+        if (numbers.Contains("123") ||
+            numbers.Contains("456") ||
+            numbers.Contains("789") ||
+            (numbers.Contains("1") && numbers.Contains("4") && numbers.Contains("7")) ||
+            (numbers.Contains("2") && numbers.Contains("5") && numbers.Contains("8")) ||
+            (numbers.Contains("3") && numbers.Contains("6") && numbers.Contains("9")) ||
+            (numbers.Contains("1") && numbers.Contains("5") && numbers.Contains("9")) ||
+            (numbers.Contains("3") && numbers.Contains("5") && numbers.Contains("7")))
+        {
+            return true;
+        }
+        return false;
+    }
+
     public bool Rule1(int[] array)
         // Role that check if number + 1 is the same 
         // as next number in the array.
@@ -104,29 +127,55 @@ public class Intelligence
     {
         Array.Sort(array);
         int i = 0;
+        int indexValue = 0;
         bool test2 = false;
+
+        for (int x = 0; x < array.Length; x++ )
+        {
+            if(array[x] == 3)
+            {
+                i = x;
+                break;
+            }
+        }
         try
         {
             int winnerCounter = 0;
             do
             {
-                if (array[i] == 3)
-                    test2 = true;
-                if (array[i + 1] == array[i] + (NumberOfBoxes - 1) && test2)
+                if (!test2)
+                    if (array[i] == 3)
+                        test2 = true;
+                if (array[i] == array[indexValue + 1] - (NumberOfBoxes - 1) && test2)
                 {
-                    winnerCounter++;
+
                     WinningsLine[winnerCounter] = array[i];
+                    winnerCounter++;
+                    if (indexValue != i)
+                    {
+                        i += indexValue + 1;
+                        indexValue += 1;
+                    }
+                    else
+                    {
+                        i += 1;
+                        indexValue += 1;
+                    }
                     if (winnerCounter == 2)
                     {
+                        WinningsLine[winnerCounter] = array[indexValue];
                         Winner = true;
                         break;
                     }
                     else
+                    {
                         Winner = false;
+                    }
                 }
-                i++;
-                
-            } while (winnerCounter != 2 || i != array.Length - 1);
+                else
+                    indexValue += 1;
+
+            } while (winnerCounter != 2 || indexValue != array.Length);
 
         }   // end of try
         catch { test2 = false; Winner = false;  }
@@ -144,22 +193,33 @@ public class Intelligence
         Array.Sort(array);
         int i = 0;
         int indexValue = 0;
-        int oldItem = 0;
-        int counter = 0;
-        bool newValue = true;
         bool test3 = false;
         try
         {
             int winnerCounter = 0;
             do
             {
+                if (!test3)
+                    if (array[i] == 1 || array[i] == 2 || array[i] == 3)
+                        test3 = true;
                 if (array[i] == array[indexValue + 1] - (NumberOfBoxes) && test3)
                 {
+                    
+                    WinningsLine[winnerCounter] = array[i];
                     winnerCounter++;
-                    WinningsLine[winnerCounter] = array[indexValue];
+                    if (indexValue != i)
+                    {
+                        i += indexValue + 1;
+                        indexValue += 1;
+                    }
+                    else
+                    {
+                        i += 1;
+                        indexValue += 1;
+                    }
                     if (winnerCounter == 2)
                     {
-
+                        WinningsLine[winnerCounter] = array[indexValue];
                         Winner = true;
                         break;
                     }
@@ -167,14 +227,10 @@ public class Intelligence
                     {
                         Winner = false;
                     }
-                    indexValue++;
                 }
                 else
-                {
-
-                }
-                i ++;
-            } while (winnerCounter != 2 || i != array.Length - 1);
+                    indexValue += 1;
+            } while (winnerCounter != 2 || indexValue != array.Length - 1);
         }   // end of try
         catch { test3 = false; Winner = false; }
         return Winner; 

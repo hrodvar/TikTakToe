@@ -19,13 +19,13 @@ public class Game
     public string TableColor = "DarkBlue";
     public string WinnerColor = "Green";
     public string InstructionColor = "Gray";
-    public bool AI { get; set; }
+    public bool AIMikael { get; set; }
     // end of properties
 
     // constructor
-    public Game(int boardSize, Player human, Player computer, bool ai)
+    public Game(int boardSize, Player human, Player computer, bool aiMikael)
     {
-        AI = ai;
+        AIMikael = aiMikael;
         bool gameSituation = true;
         Board board = new Board(boardSize);
         Intelligence intelligence = new Intelligence();
@@ -33,9 +33,9 @@ public class Game
         int i = 0;
         do
         {
-            if (!(gameSituation = PlayValue(human, computer.PlayerMoves, board, i)))
+            if (!(gameSituation = PlayValue(human, computer.PlayerMoves, board, i, false)))
                 break;
-            if (!(gameSituation = PlayValue(computer, human.PlayerMoves, board, i)))
+            if (!(gameSituation = PlayValue(computer, human.PlayerMoves, board, i, false)))
                 break;
             i++;
         } while (gameSituation);
@@ -44,8 +44,9 @@ public class Game
 
     // methods
 
-    public bool PlayValue(Player player, int[] competitor, Board board, int i)
+    public bool PlayValue(Player player, int[] competitor, Board board, int i, bool ai)
     {
+        string Draw = "";
         bool gameSituation = true;
         Intelligence intelligence = new Intelligence();
         Array.Resize<int>(ref player.PlayerMoves, i + 1);
@@ -55,14 +56,19 @@ public class Game
         {
             // AI is true player is competing with the computer.
             // then 'choose' take value from the AI else from player 2.
-            if (AI)
-                choose = ' ';// take the value from the AI!
-            else
-
+            //if (ai)
+            //{
+            //    AIMikael mikael = new AIMikael(player.PlayerMoves, competitor, player);
+            //    choose = mikael.resultat;
+            //    value = ((int)Char.GetNumericValue(choose)) + 1;
+            //}
+            //else
+            //{
                 choose = Console.ReadKey(true).KeyChar;
-            
+                value = (int)Char.GetNumericValue(choose);
+            //}
             // test if user choose used window!
-            value = (int)Char.GetNumericValue(choose);
+            //value = (int)Char.GetNumericValue(choose);
             if (value < 1 || value > 9)
             {
                 continue;
@@ -91,24 +97,34 @@ public class Game
 
             if (gameSituation)
                 board.Play(choose, player.Symbol, board.SymbolColor);
+            if (player.PlayerMoves.Count() + competitor.Count() == 9)
+                Draw = "Draw";
         } while (!gameSituation);
 
         gameSituation = true;
         player.PlayerMoves[i] = value;
         if (GameSituation(player, intelligence.IntelligenceCalculator(player.PlayerMoves), 
-            board, intelligence.WinningsLine))
+            board, intelligence.WinningsLine, Draw))
             gameSituation = true;
         else
             gameSituation = false;
         return gameSituation;
     }   // end of PlayValue()
 
-    public bool GameSituation(Player player, bool gameSituation, Board board, int[] array)
+    public bool GameSituation(Player player, bool gameSituation, Board board, int[] array, string draw)
     {
+        string output = "";
+        if (draw != "" && !gameSituation)
+        {
+            gameSituation = true;
+            output = draw;
+        }
+        else
+            output = player.PlayerName + " is a winner!";
         if (gameSituation)
         {
-            (player.PlayerName + " is a winner!").CW(11, 18, WinnerColor, TableColor);
-            ("Press enter to continue").CW(9, 20, InstructionColor, TableColor);
+            (output).CW(11, 18, WinnerColor, TableColor);
+            ("Press Enter to continue or Esc to quite").CW(9, 20, InstructionColor, TableColor);
             foreach (int value in array)
             {
                 board.Play(Convert.ToChar(value.ToString()), player.Symbol, "Red");
