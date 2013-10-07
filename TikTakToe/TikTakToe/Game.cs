@@ -124,7 +124,7 @@ public class Game
         if (gameSituation)
         {
             (output).CW(11, 18, WinnerColor, TableColor);
-            ("Press Enter to continue or Esc to quite").CW(9, 20, InstructionColor, TableColor);
+            ("Press Enter to continue or Esc to quite").CW(1, 20, InstructionColor, TableColor);
             foreach (int value in array)
             {
                 board.Play(Convert.ToChar(value.ToString()), player.Symbol, "Red");
