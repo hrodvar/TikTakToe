@@ -85,6 +85,7 @@ public class Intelligence
 
     public bool AlgorithmFunction(int[] playerArray)
     {
+        Array.Sort(playerArray);
         int[] testingArray = new int[9];
         
         foreach (int item in playerArray)
