@@ -34,15 +34,8 @@ public class Game
         do
         {
             if (!(gameSituation = PlayValue(human, computer.PlayerMoves, board, i, false)))
-<<<<<<< Updated upstream
                 break;
-            if (!(gameSituation = PlayValue(computer, human.PlayerMoves, board, i, false)))
-=======
-            {
-                i++;
->>>>>>> Stashed changes
-                break;
-            }
+ 
             if (!(gameSituation = PlayValue(computer, human.PlayerMoves, board, i, true)))
             {
                 i++;
@@ -55,11 +48,8 @@ public class Game
 
     // methods
 
-<<<<<<< Updated upstream
-    public bool PlayValue(Player player, int[] competitor, Board board, int i, bool ai)
-=======
+
     public bool PlayValue(Player player, int[] competitor, Board board, int i, bool AI)
->>>>>>> Stashed changes
     {
         string Draw = "";
         bool gameSituation = true;
@@ -73,7 +63,6 @@ public class Game
         {
             // AI is true player is competing with the computer.
             // then 'choose' take value from the AI else from player 2.
-<<<<<<< Updated upstream
             //if (ai)
             //{
             //    AIMikael mikael = new AIMikael(player.PlayerMoves, competitor, player);
@@ -82,7 +71,6 @@ public class Game
             //}
             //else
             //{
-=======
             if (AI)
             {
                 MikaelsAI2 MikaelsBot = new MikaelsAI2(player.PlayerMoves, competitor, player);
@@ -92,18 +80,11 @@ public class Game
             }
             else
             {
-
->>>>>>> Stashed changes
                 choose = Console.ReadKey(true).KeyChar;
                 value = (int)Char.GetNumericValue(choose);
-            //}
-            // test if user choose used window!
-<<<<<<< Updated upstream
-            //value = (int)Char.GetNumericValue(choose);
-=======
-            value = (int)Char.GetNumericValue(choose);
-        }
->>>>>>> Stashed changes
+
+            }
+
             if (value < 1 || value > 9)
             {
                 continue;
@@ -137,14 +118,11 @@ public class Game
         } while (!gameSituation);
 
         gameSituation = true;
-<<<<<<< Updated upstream
-        player.PlayerMoves[i] = value;
+
+        player.PlayerMoves[length] = value;
         if (GameSituation(player, intelligence.IntelligenceCalculator(player.PlayerMoves), 
             board, intelligence.WinningsLine, Draw))
-=======
-        player.PlayerMoves[length] = value;
-        if (GameSituation(player.PlayerName, intelligence.IntelligenceCalculator(player.PlayerMoves)))
->>>>>>> Stashed changes
+
             gameSituation = true;
         else
             gameSituation = false;
