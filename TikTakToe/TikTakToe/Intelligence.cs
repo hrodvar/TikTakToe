@@ -49,13 +49,13 @@ public class Intelligence
     }   // end of ComputersTurn()
 
     public bool IntelligenceCalculator(int[] array)
+        // This method returns true if someone won.
     {
         bool match = false;
         if (array.Length > 2)
         {
             match = false;
-            match = PhilipRules(array);
-            //match = Rule1(array) || Rule2(array) || Rule3(array) || Rule4(array) ? true : false;
+            match = AlgorithmFunction(array);
         }   // end of if
         return match;
     }   // end of IntelligenceCalculator()
@@ -83,22 +83,69 @@ public class Intelligence
         return false;
     }
 
-    public bool Rule1(int[] array)
+    public bool AlgorithmFunction(int[] playerArray)
+    {
+        int[] testingArray = new int[9];
+        
+        foreach (int item in playerArray)
+        {
+            testingArray[item - 1] = item; 	 
+        }   // end of foreach
+
+        int i = 0;
+        bool result = false;
+        do
+        {
+            if (testingArray[i] != 0 && !result)
+            {
+                switch (i)
+                {
+                    case 0:
+                        {
+                            result = Rule1(testingArray, i) ||
+                            Rule3(testingArray, i) ||
+                            Rule4(testingArray, i) ?
+                            true : false; break;
+                        }   // end of case 0
+                    case 1:
+                        {
+                            result = Rule3(testingArray, i) ?
+                            true : false; break;
+                        }   // end of case 1
+                    case 2:
+                        {
+                            result = Rule2(testingArray, i) ||
+                            Rule3(testingArray, i) ?
+                            true : false; break;
+                        }   // end of case 2
+                    case 3: 
+                        { 
+                            result = Rule1(testingArray, i); 
+                            break;
+                        }   // end of case 3 
+                    case 6: 
+                        { 
+                            result = Rule1(testingArray, i); 
+                            break;
+                        }   // end of case 6
+                }   // end of switch
+            }   // end of if
+            i++;
+        } while(i < testingArray.Length);
+        return result;
+    }   // end of AlgorithmFunction()
+
+    public bool Rule1(int[] array, int i)
         // Role that check if number + 1 is the same 
         // as next number in the array.
         //      ___ ___ ___
-        // formel: [index + 1] = [index] + 1;
+        // formel: [index + 1] = =[index] + 1;
     {
-        Array.Sort(array);
-        int i = 0;
-        bool test1 = false;
         try
         {
             int winnerCounter = 0;
             do{
-                if (array[i] == 1 || array[i] == 4 || array[i] == 7)
-                    test1 = true;
-                if (array[i + 1] == array[i] + 1 && test1)
+                if (array[i + 1] == array[i] + 1)
                 {
                     winnerCounter++;
                     WinningsLine[winnerCounter] = array[i];
@@ -106,18 +153,18 @@ public class Intelligence
                     {
                         Winner = true;
                         break;
-                    }
+                    }   // end of if
                     else
                         Winner = false;
-                }
+                }   // end of if
                 i++;
             } while (winnerCounter != 2 || i != array.Length - 1);
         }   // end of try
-        catch { test1 = false; Winner = false; }
+        catch { Winner = false; }
         return Winner; 
     }   // end of Rule1()
 
-    public bool Rule2(int[] array)
+    public bool Rule2(int[] array, int i)
         // Role that check if number + 2 is the same
         // as next number in the array.
         //      /
@@ -125,64 +172,45 @@ public class Intelligence
         //    /
         // formel: [index + (NumberOfBoxes - 1)] = [index] + (NumberOfBoxes - 1)
     {
-        Array.Sort(array);
-        int i = 0;
-        int indexValue = 0;
-        bool test2 = false;
-
-        for (int x = 0; x < array.Length; x++ )
-        {
-            if(array[x] == 3)
-            {
-                i = x;
-                break;
-            }
-        }
+        int indexValue = i;
         try
         {
             int winnerCounter = 0;
             do
             {
-                if (!test2)
-                    if (array[i] == 3)
-                        test2 = true;
-                if (array[i] == array[indexValue + 1] - (NumberOfBoxes - 1) && test2)
+                if (array[i] == array[indexValue + 1] - (NumberOfBoxes - 1))
                 {
-
                     WinningsLine[winnerCounter] = array[i];
                     winnerCounter++;
                     if (indexValue != i)
                     {
-                        i += indexValue + 1;
+                        i = indexValue + 1;
                         indexValue += 1;
-                    }
+                    }   // end of if
                     else
                     {
                         i += 1;
                         indexValue += 1;
-                    }
+                    }   // end of else
+
                     if (winnerCounter == 2)
                     {
                         WinningsLine[winnerCounter] = array[indexValue];
                         Winner = true;
                         break;
-                    }
+                    }   // end of if
                     else
-                    {
                         Winner = false;
-                    }
                 }
                 else
                     indexValue += 1;
-
-            } while (winnerCounter != 2 || indexValue != array.Length);
-
+            } while (winnerCounter != 2 || indexValue != array.Length - 1);
         }   // end of try
-        catch { test2 = false; Winner = false;  }
+        catch { Winner = false;  }
         return Winner; 
     }   // end of Rule2()
     
-    public bool Rule3(int[] array)
+    public bool Rule3(int[] array, int i)
         // Role that check if number + 3 is the same
         // as next number in the array.
         //      |
@@ -190,53 +218,46 @@ public class Intelligence
         //      |
         // formel: [index + NumberOfBoxes] = [index] + NumberOfBoxes;
     {
-        Array.Sort(array);
-        int i = 0;
-        int indexValue = 0;
-        bool test3 = false;
+        int indexValue = i;
         try
         {
             int winnerCounter = 0;
             do
             {
-                if (!test3)
-                    if (array[i] == 1 || array[i] == 2 || array[i] == 3)
-                        test3 = true;
-                if (array[i] == array[indexValue + 1] - (NumberOfBoxes) && test3)
+                if (array[i] == array[indexValue + 1] - (NumberOfBoxes))
                 {
                     
                     WinningsLine[winnerCounter] = array[i];
                     winnerCounter++;
+                    if (winnerCounter == 2)
+                    {
+                        WinningsLine[winnerCounter] = array[indexValue + 1];
+                        Winner = true;
+                        break;
+                    }   // end of if
+                    else
+                        Winner = false;
+
                     if (indexValue != i)
                     {
-                        i += indexValue + 1;
-                        indexValue += 1;
-                    }
+                        i = indexValue + 1;
+                        indexValue = i;
+                    }   // end of if
                     else
                     {
                         i += 1;
                         indexValue += 1;
-                    }
-                    if (winnerCounter == 2)
-                    {
-                        WinningsLine[winnerCounter] = array[indexValue];
-                        Winner = true;
-                        break;
-                    }
-                    else
-                    {
-                        Winner = false;
-                    }
+                    }   // end of else
                 }
                 else
                     indexValue += 1;
             } while (winnerCounter != 2 || indexValue != array.Length - 1);
         }   // end of try
-        catch { test3 = false; Winner = false; }
+        catch { Winner = false; }
         return Winner; 
     }   // end of Rule3()
 
-    public bool Rule4(int[] array)
+    public bool Rule4(int[] array, int i)
         // Role that check if number + 3 is the same
         // as next number in the array.
         //      \
@@ -244,17 +265,12 @@ public class Intelligence
         //        \
         // formel: [index + (NumberOfBoxes + 1)] = [index] + (NumberOfBoxes +)
     {
-        Array.Sort(array);
-        int i = 0;
-        bool test4 = false;
         try
         {
             int winnerCounter = 0;
             do
             {
-                if (array[i] == 1)
-                    test4 = true;
-                if (array[i + 1] == array[i] + (NumberOfBoxes + 1) && test4)
+                if (array[i + 1] == array[i] + (NumberOfBoxes + 1))
                 {
                     winnerCounter++;
                     WinningsLine[winnerCounter] = array[i];
@@ -262,14 +278,14 @@ public class Intelligence
                     {
                         Winner = true;
                         break;
-                    }
+                    }   // end of if
                     else
                         Winner = false;
-                }
+                }   // end of if
                 i++;
             } while (winnerCounter != 2 || i != array.Length - 1);
         }   // end of try
-        catch { test4 = false; Winner = false;  }
+        catch { Winner = false;  }
         return Winner; 
     }   // end of Rule4()
 
