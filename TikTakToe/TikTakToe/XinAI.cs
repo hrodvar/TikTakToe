@@ -46,6 +46,7 @@ namespace TikTakToe
                     aiAnswer = 4;
                     break;
                 }
+
                 //when [4] is empty
                 else if (P[0] == Player.Symbol && P[8] == Player.Symbol || P[2] == Player.Symbol && P[6] == Player.Symbol ||
                     (P[1] == Player.Symbol && P[7] == Player.Symbol) || (P[3] == Player.Symbol && P[5] == Player.Symbol))
