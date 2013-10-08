@@ -144,6 +144,7 @@ public class Game
 
     public bool GameSituation(Player player, bool gameSituation, Board board, int[] array, string draw)
     {
+        String emptyOutput = new String(' ', 20);
         string output = "";
         if (draw != "" && !gameSituation)
         {
@@ -154,10 +155,11 @@ public class Game
         {
             ("☺").CW(8, 18, SmileysWinnerColor, TableColor);
             ("☺").CW(32, 18, SmileysWinnerColor, TableColor);
-            output = player.PlayerName + " is a winner!";
+            output = player.PlayerName + " is a winner";
         }
         if (gameSituation)
         {
+            (emptyOutput).CW(11, 18, TableColor, TableColor);
             (output).CW(11, 18, WinnerColor, TableColor);
             ("Press Enter - Play again").CW(9, 20, InstructionColor, TableColor);
             ("Press F1    - Menu").CW(9, 21, InstructionColor, TableColor);
