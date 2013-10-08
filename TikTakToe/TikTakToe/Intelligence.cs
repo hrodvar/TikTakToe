@@ -5,13 +5,9 @@ using System.Linq;
 
 /* 
  * Programmeringsverktyg: Visual Studio 2012 pro.
- *               Program: class Player is part of the project TikTakToe.
+ *               Program: class Intelligence is part of the project TikTakToe.
  *                 Datum: 2013-09-26
  *            Programare: Hrodvar Johannsson
- *                        Mikael Wilkon
- *                        Philip Andreasson
- *                        Fatos Jasharaj
- *                        Xin Hansen
  */
 
 public class Intelligence
@@ -21,32 +17,32 @@ public class Intelligence
     public static int[] ComputerMoves = new int[0];
     public int[] WinningsLine  = new int[3];
     public static int NumberOfBoxes = 3;
-    public static int WinnerPoints = 2;
+    public static int WinnerPoints { get; set; }
     public static int Counter = 0;
     public static bool Winner = false;
     public static int Rounds = 1;
     // end of properties
 
     // constructor
-    public Intelligence()
+    public Intelligence(int winnerPoints)
     {
-
+        WinnerPoints = winnerPoints;
     }   // end of Intelligence()
     // end of constructor
 
     // methods
-    public void HumansTurn(int HumansMove)
-    {
-        int HumansMovesArrayLength = HumansMoves.Length;
-        Array.Resize<int>(ref HumansMoves, HumansMovesArrayLength + 1);
-        HumansMovesArrayLength = HumansMoves.Length;
-        HumansMoves[HumansMovesArrayLength] = HumansMove;
-    }   // end of HumansTurn()
+    //public void HumansTurn(int HumansMove)
+    //{
+    //    int HumansMovesArrayLength = HumansMoves.Length;
+    //    Array.Resize<int>(ref HumansMoves, HumansMovesArrayLength + 1);
+    //    HumansMovesArrayLength = HumansMoves.Length;
+    //    HumansMoves[HumansMovesArrayLength] = HumansMove;
+    //}   // end of HumansTurn()
 
-    public void ComputersTurn(int[] array)
-    {
+    //public void ComputersTurn(int[] array)
+    //{
 
-    }   // end of ComputersTurn()
+    //}   // end of ComputersTurn()
 
     public bool IntelligenceCalculator(int[] array)
         // This method returns true if someone won.
@@ -60,38 +56,13 @@ public class Intelligence
         return match;
     }   // end of IntelligenceCalculator()
 
-
-    public bool PhilipRules(int[] array)
-    {
-        Array.Sort(array);
-        string numbers = string.Empty;
-        for (int i = 0; i < array.Length; i++)
-        {
-            numbers += array[i].ToString();
-        }
-        if (numbers.Contains("123") ||
-            numbers.Contains("456") ||
-            numbers.Contains("789") ||
-            (numbers.Contains("1") && numbers.Contains("4") && numbers.Contains("7")) ||
-            (numbers.Contains("2") && numbers.Contains("5") && numbers.Contains("8")) ||
-            (numbers.Contains("3") && numbers.Contains("6") && numbers.Contains("9")) ||
-            (numbers.Contains("1") && numbers.Contains("5") && numbers.Contains("9")) ||
-            (numbers.Contains("3") && numbers.Contains("5") && numbers.Contains("7")))
-        {
-            return true;
-        }
-        return false;
-    }
-
     public bool AlgorithmFunction(int[] playerArray)
     {
         Array.Sort(playerArray);
         int[] testingArray = new int[9];
-        
-        foreach (int item in playerArray)
-        {
-            testingArray[item - 1] = item; 	 
-        }   // end of foreach
+        if (playerArray.Length > 0)
+            foreach (int item in playerArray)
+                testingArray[item - 1] = item; 	 
 
         int i = 0;
         bool result = false;
@@ -142,6 +113,7 @@ public class Intelligence
         //      ___ ___ ___
         // formel: [index + 1] = =[index] + 1;
     {
+        int startValue = i;
         try
         {
             int winnerCounter = 0;
@@ -159,7 +131,7 @@ public class Intelligence
                         Winner = false;
                 }   // end of if
                 i++;
-            } while (winnerCounter != 2 || i != array.Length - 1);
+            } while (winnerCounter != 2 || i != array.Length - 1 || startValue + 3 != i);
         }   // end of try
         catch { Winner = false; }
         return Winner; 
@@ -202,7 +174,7 @@ public class Intelligence
                     }   // end of if
                     else
                         Winner = false;
-                }
+                }   // end of if
                 else
                     indexValue += 1;
             } while (winnerCounter != 2 || indexValue != array.Length - 1);
@@ -249,7 +221,7 @@ public class Intelligence
                         i += 1;
                         indexValue += 1;
                     }   // end of else
-                }
+                }   // end of if
                 else
                     indexValue += 1;
             } while (winnerCounter != 2 || indexValue != array.Length - 1);

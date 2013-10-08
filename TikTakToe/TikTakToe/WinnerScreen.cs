@@ -8,11 +8,7 @@ using System.Threading.Tasks;
  * Programmeringsverktyg: Visual Studio 2012 pro.
  *               Program: class Player is part of the project TikTakToe.
  *                 Datum: 2013-10-01
- *            Programare: Hrodvar Johannsson
- *                        Mikael Wilkon
- *                        Philip Andreasson
- *                        Fatos Jasharaj
- *                        Xin Hansen
+ *            Programare: Fatos Jasharaj
  */
 
 public class WinnerScreen
@@ -23,14 +19,13 @@ public class WinnerScreen
     public string BoardColor = "Yellow";
     public string TextColor = "Yellow";
     public List<string> Alternativ = new List<string>() { "Meny", "Avsluta" };
-    //  public Player Human { get; set; }
-    //  public Player Computer { get; set; }
-
+    public Player Winner { get; set; }
     // end of properties
 
     // constructor
     public WinnerScreen()
     {
+        //Winner = player;
         CreateFront(Boardsize);
         MenyIIList();
     }   // end of  StartUp()
@@ -51,7 +46,7 @@ public class WinnerScreen
         Utseende(boardsize);
 
         (strLeftTopCorner + strHorisontell + strRightTopCorner).CW(xSheet, ySheet, BoardColor);
-        ("Winner!").CW(17, 4, WinnerColor);
+        ("Winner " + Winner.PlayerName + "!").CW(17, 4, WinnerColor);
 
         for (int l = 0; l < 14; l++)
         {
@@ -88,7 +83,7 @@ public class WinnerScreen
         startUp.MenylList();
 
         // startUp.CreateFront(Boardsize);
-        Game game = new Game(startUp.BoardSize, startUp.Human, startUp.Computer, startUp.AI);
+        Game game = new Game(startUp.BoardSize, startUp.Human, startUp.Computer, startUp.AIAuthor);
 
         Console.Clear();
     }   // end of GetOptions()

@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TikTakToe", "TikTakToe\TikTakToe.csproj", "{FEA47843-7F14-4C44-A185-1E791A5B2824}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{05AC575E-B975-4212-9891-91632706911B}"
+	ProjectSection(SolutionItems) = preProject
+		TikTakToe\WinnerScreen.cs = TikTakToe\WinnerScreen.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

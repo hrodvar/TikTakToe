@@ -5,10 +5,6 @@
  *               Program: class Player is part of the project TikTakToe.
  *                 Datum: 2013-09-25
  *            Programare: Hrodvar Johannsson
- *                        Mikael Wilkon
- *                        Philip Andreasson
- *                        Fatos Jasharaj
- *                        Xin Hansen
  */
 
 public class Player
@@ -29,4 +25,4 @@ public class Player
 
     // methods
     // end of methods
-}
+}   // end of class Player

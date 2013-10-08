@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 /* 
  * Programmeringsverktyg: Visual Studio 2012 pro.
- *               Program: class Player is part of the project TikTakToe.
+ *               Program: class Board is part of the project TikTakToe.
  *                 Datum: 2013-09-25
  *            Programare: Hrodvar Johannsson
  *                        Mikael Wilkon
  *                        Philip Andreasson
- *                        Fatos Jasharaj
- *                        Xin Hansen
  */
 
 public class Board
@@ -117,14 +115,14 @@ public class Board
 
     public void PlayerInformation(string player1, char player1Symbol, string player2, char player2Symbol)
     {
-        player1 = player1.Length > 8 ? player1.Substring(0, 8) : player1;
-        player2 = player2.Length > 8 ? player2.Substring(0, 8) : player2;
-        (player1).CW(5, 2, PlayerColor, TableColor);
-        ("har").CW(14, 2, PlayerColor, TableColor);
-        (player1Symbol.ToString()).CW(19, 2, SymbolColor, TableColor);
-        (player2).CW(5, 3, PlayerColor, TableColor);
-        ("har").CW(14, 3, PlayerColor, TableColor);
-        (player2Symbol.ToString()).CW(19, 3, SymbolColor, TableColor
-);
+        player1 = player1.Length > 11 ? player1.Substring(0, 11) : player1;
+        player2 = player2.Length > 11 ? player2.Substring(0, 11) : player2;
+        (player1).CW(11, 2, PlayerColor, TableColor);
+        ("har").CW(23, 2, PlayerColor, TableColor);
+        (player1Symbol.ToString()).CW(27, 2, SymbolColor, TableColor);
+        (player2).CW(11, 3, PlayerColor, TableColor);
+        ("har").CW(23, 3, PlayerColor, TableColor);
+        (player2Symbol.ToString()).CW(27, 3, SymbolColor, TableColor);
     }   // end of PlayerInformation()
+
 }   // end of class Board
