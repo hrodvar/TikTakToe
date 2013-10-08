@@ -182,7 +182,7 @@ public class Game
         (output).CW(11, 18, TableColor, TableColor);
         ("☺").CW(8, 18, SmileysColor, TableColor);
         ("☺").CW(32, 18, SmileysColor, TableColor);
-        output = name.EndsWith("s") ? ("It's " + name + " turn!") : ("It's " + name + "s turn!");
+        output = name.EndsWith("s") ? ("It's " + name + " turn") : ("It's " + name + "s turn");
         (output).CW(11, 18, WinnerColor, TableColor);        
     }   // end of Turn()
 
