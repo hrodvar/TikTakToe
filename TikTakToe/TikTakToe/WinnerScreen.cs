@@ -28,7 +28,7 @@ public class WinnerScreen
         //Winner = player;
         CreateFront(Boardsize);
         MenyIIList();
-    }   // end of  StartUp()
+    }   // end of  WinnerScreen()
     // end of constructor
 
     // methods
