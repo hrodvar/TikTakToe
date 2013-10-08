@@ -51,23 +51,21 @@ public class AIHroi
                     {
                         if (pos[i, j] == 0)
                             k = values[i, j];
-                        
                             sum += pos[i, j];
                     }   // end of for  
-
                     if (sum == value)
                         return k; 
                     else if (sum == -value)
                         return k; 
-
                     sum = 0;
                 }   // end of for
                 value -= 1;
             } while (value != 0);
-        }
+        }   // end of try
         catch { }
         return 0;
     }   // CheckOutTheWinningsPositions()
+
     public void InsertValue(int[] array, int playerValue)
     {
         foreach (int i in array)
@@ -76,69 +74,19 @@ public class AIHroi
             {
                 switch (i)
                 {
-                    case 1:
-                        {
-                            pos[0, 0] = playerValue;
-                            pos[3, 0] = playerValue;
-                            pos[6, 0] = playerValue;
-                            break;
-                        }
-                    case 2:
-                        {
-                            pos[0, 1] = playerValue;
-                            pos[4, 0] = playerValue;
-                            break;
-                        }
-                    case 3:
-                        {
-                            pos[0, 2] = playerValue;
-                            pos[5, 0] = playerValue;
-                            pos[7, 0] = playerValue;
-                            break;
-                        }
-                    case 4:
-                        {
-                            pos[1, 0] = playerValue;
-                            pos[3, 1] = playerValue;
-                            break;
-                        }
-                    case 5:
-                        {
-                            pos[1, 1] = playerValue;
-                            pos[4, 1] = playerValue;
-                            pos[6, 1] = playerValue;
-                            pos[7, 1] = playerValue;
-                            break;
-                        }
-                    case 6:
-                        {
-                            pos[1, 2] = playerValue;
-                            pos[5, 1] = playerValue;
-                            break;
-                        }
-                    case 7:
-                        {
-                            pos[2, 0] = playerValue;
-                            pos[3, 2] = playerValue;
-                            pos[7, 2] = playerValue;
-                            break;
-                        }
-                    case 8:
-                        {
-                            pos[2, 1] = playerValue;
-                            pos[4, 2] = playerValue;
-                            break;
-                        }
-                    case 9:
-                        {
-                            pos[2, 2] = playerValue;
-                            pos[5, 2] = playerValue;
-                            pos[6, 2] = playerValue;
-                            break;
-                        }
+                    case 1: {pos[0, 0] = playerValue; pos[3, 0] = playerValue; pos[6, 0] = playerValue; break;}
+                    case 2: {pos[0, 1] = playerValue; pos[4, 0] = playerValue; break;}
+                    case 3: {pos[0, 2] = playerValue; pos[5, 0] = playerValue; pos[7, 0] = playerValue; break;}
+                    case 4: {pos[1, 0] = playerValue; pos[3, 1] = playerValue; break;}
+                    case 5: {pos[1, 1] = playerValue; pos[4, 1] = playerValue; 
+                        pos[6, 1] = playerValue; pos[7, 1] = playerValue; break;}
+                    case 6: {pos[1, 2] = playerValue; pos[5, 1] = playerValue; break;}
+                    case 7: {pos[2, 0] = playerValue; pos[3, 2] = playerValue; pos[7, 2] = playerValue; break;}
+                    case 8: {pos[2, 1] = playerValue; pos[4, 2] = playerValue; break;}
+                    case 9: {pos[2, 2] = playerValue; pos[5, 2] = playerValue; pos[6, 2] = playerValue; break;}
                 }   // end of switch
-            }
-        }
+            }   // end of if
+        }   // end of foreach
     }   // end of WinningPositions()
 
     public int[] CombineArrays(int[] computerArray, int[] humanArray)
@@ -153,8 +101,5 @@ public class AIHroi
                 resultArray[item - 1] = item;
         return resultArray;
     }   // end of CombineArrays()
-
     // end of methods
-
 }   // end of class AIHroi
-
