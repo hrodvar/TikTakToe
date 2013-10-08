@@ -31,19 +31,6 @@ public class Intelligence
     // end of constructor
 
     // methods
-    //public void HumansTurn(int HumansMove)
-    //{
-    //    int HumansMovesArrayLength = HumansMoves.Length;
-    //    Array.Resize<int>(ref HumansMoves, HumansMovesArrayLength + 1);
-    //    HumansMovesArrayLength = HumansMoves.Length;
-    //    HumansMoves[HumansMovesArrayLength] = HumansMove;
-    //}   // end of HumansTurn()
-
-    //public void ComputersTurn(int[] array)
-    //{
-
-    //}   // end of ComputersTurn()
-
     public bool IntelligenceCalculator(int[] array)
         // This method returns true if someone won.
     {
@@ -131,7 +118,7 @@ public class Intelligence
                         Winner = false;
                 }   // end of if
                 i++;
-            } while (winnerCounter != 2 || i != array.Length - 1 || startValue + 3 != i);
+            } while (winnerCounter != 2 || i != array.Length - 1 || startValue + 3 <= i);
         }   // end of try
         catch { Winner = false; }
         return Winner; 

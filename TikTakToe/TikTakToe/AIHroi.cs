@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /* 
  * Programmeringsverktyg: Visual Studio 2012 pro.
@@ -14,7 +10,6 @@ using System.Threading.Tasks;
 public class AIHroi
 {
     // properties
-    public Intelligence intelligence { get; set; }
     public int[] BoardArray = new int[9];
     public int[,] pos = new int[8, 3];
     public int[,] values = new int[8,3] { {1,2,3}, {4,5,6}, {7, 8 ,9}, {1, 4, 7}, {2, 5, 8}, {3, 6, 9}, {1, 5, 9}, {3, 5, 7} };

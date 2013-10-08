@@ -25,4 +25,5 @@ public class Player
 
     // methods
     // end of methods
+
 }   // end of class Player

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /* 
  * Programmeringsverktyg: Visual Studio 2012 pro.
@@ -35,6 +31,7 @@ public class Board
     }
     // end of constructor
 
+    // methods
     public void CreateBoard(int boardSize)
     {
         BoardSize   = boardSize;
@@ -124,5 +121,7 @@ public class Board
         ("har").CW(23, 3, PlayerColor, TableColor);
         (player2Symbol.ToString()).CW(27, 3, SymbolColor, TableColor);
     }   // end of PlayerInformation()
+
+    // end of methods
 
 }   // end of class Board

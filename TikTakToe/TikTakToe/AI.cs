@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /* 
  * Programmeringsverktyg: Visual Studio 2012 pro.
@@ -16,7 +12,6 @@ public class AI
     // properties
     public string Name { get; set; }
     public bool Run { get; set; }
-    public object RunMethod { get; set; }
     // end of properties
 
     // constuctor
@@ -29,5 +24,6 @@ public class AI
 
     // methods
     // end of methods
+
 }   // end of class AI
 
