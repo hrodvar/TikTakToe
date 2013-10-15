@@ -109,7 +109,7 @@ class MikaelsAI2
                 
                  }
 
-                else if ((!IsEmpty(player2, 3))&& ((IsEmpty(player2, 7)) && (IsEmpty(player2, 4))) || (!IsEmpty(player2, 3)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 2))))
+                else if ((!IsEmpty(player2, 1))&& ((IsEmpty(player2, 7)) && (IsEmpty(player2, 4))) || (!IsEmpty(player2, 1)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 2))))
                 {
 
                     if (!IsEmpty(player2, 1) && !IsEmpty(player1, 1))
@@ -134,7 +134,7 @@ class MikaelsAI2
 
                 }
 
-                else if ((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 4))) || (!IsEmpty(player2, 3)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 8))))
+                else if ((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 4))) || (!IsEmpty(player2, 7)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 8))))
                 {
 
 
@@ -160,7 +160,7 @@ class MikaelsAI2
 
                 }
 
-                else if ((!IsEmpty(player2, 3))&& ((IsEmpty(player2, 8)) && (IsEmpty(player2, 7))) || (!IsEmpty(player2, 3))&& ((IsEmpty(player2, 3)) && (IsEmpty(player2, 6))))
+                else if ((!IsEmpty(player2, 9))&& ((IsEmpty(player2, 8)) && (IsEmpty(player2, 7))) || (!IsEmpty(player2, 9))&& ((IsEmpty(player2, 3)) && (IsEmpty(player2, 6))))
                 {
 
 
@@ -185,7 +185,7 @@ class MikaelsAI2
                     }
 
                 }
-                else if ((!IsEmpty(player2, 3))&& ((IsEmpty(player2, 7)) && (IsEmpty(player2, 9))) || (!IsEmpty(player2, 3)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 5))))
+                else if ((!IsEmpty(player2, 8))&& ((IsEmpty(player2, 7)) && (IsEmpty(player2, 9))) || (!IsEmpty(player2, 8)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 5))))
                 {
 
 
@@ -197,7 +197,7 @@ class MikaelsAI2
                     }
                     else
                     {
-                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber))
+                        if (!IsEmpty(player1, RandomNumber) && !IsEmpty(player2, RandomNumber))
                         {
                             aiSvar = RandomNumber;
                             legit = true;
@@ -210,7 +210,7 @@ class MikaelsAI2
                     }
 
                 }
-                else if ((!IsEmpty(player2, 3))&& ((IsEmpty(player2, 1)) && (IsEmpty(player2, 7))) || (!IsEmpty(player2, 3)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 6))))
+                else if ((!IsEmpty(player2, 4))&& ((IsEmpty(player2, 1)) && (IsEmpty(player2, 7))) || (!IsEmpty(player2, 4)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 6))))
                 {
 
 
@@ -235,7 +235,7 @@ class MikaelsAI2
                     }
 
                 }
-                else if ((!IsEmpty(player2, 3))&& ((IsEmpty(player2, 9)) && (IsEmpty(player2, 3))) || (!IsEmpty(player2, 3)) &&((IsEmpty(player2, 4)) && (IsEmpty(player2, 5))))
+                else if ((!IsEmpty(player2, 6))&& ((IsEmpty(player2, 9)) && (IsEmpty(player2, 3))) || (!IsEmpty(player2, 6)) &&((IsEmpty(player2, 4)) && (IsEmpty(player2, 5))))
                 {
 
 
@@ -260,7 +260,7 @@ class MikaelsAI2
                     }
 
                 }
-                else if ((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 3))) || (!IsEmpty(player2, 3)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 5))))
+                else if ((!IsEmpty(player2, 2)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 3))) || (!IsEmpty(player2, 2)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 5))))
                 {
 
 
@@ -285,8 +285,8 @@ class MikaelsAI2
                     }
 
                 }
-                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 8))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 6))) ||
-                   (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 9))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 3))))
+                else if ((!IsEmpty(player2, 5))&& ((IsEmpty(player2, 2)) && (IsEmpty(player2, 8))) || (!IsEmpty(player2, 5))&& ((IsEmpty(player2, 4)) && (IsEmpty(player2, 6))) ||
+                   (!IsEmpty(player2, 5))&& ((IsEmpty(player2, 1)) && (IsEmpty(player2, 9))) || (!IsEmpty(player2, 5)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 3))))
                 {
 
 
