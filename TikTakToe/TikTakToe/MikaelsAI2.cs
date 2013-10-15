@@ -18,325 +18,325 @@ class MikaelsAI2
     public int RoysVariabel { get; set; }
     private int RandomNumber { get; set; }
     private bool empty { get; set; }
+    
     // constructor
     public MikaelsAI2(int[] player1, int[] player2, Player Player)
     {
         
-        foreach (int item1 in player2)
-        {
-
-            CP[item1] = Player.Symbol;
-        }
-
-        foreach (int item2 in player1)
-        {
-
-            CP[item2] = Player.Symbol;
-        }
-
-        RoysVariabel = IsWinPossible(Player);
-        //RoysVariabel = ThatRandom();
+        RoysVariabel = CheckForWin(player1, player2, Player);
 
     } // end of constructor
 
     // a method that checks if the chosen index is already used
-    public bool CheckIfUsed(char[] cp, int indexToCheck)
+    
+    
+    public bool IsEmpty(int[] arrayToCheck, int num)
+        
     {
-        bool IsEmpty = false;
+        bool empty = false;
 
-        if (cp[indexToCheck] == 0)
-            IsEmpty = true;
-        else
-        {
-            IsEmpty = false;
-        }
+        if (arrayToCheck.All(number => arrayToCheck.Contains(num)))
+            empty = true;
 
-        return IsEmpty;
-    }
-    //end of checkifused method
-    public int ThatRandom()
-    {
-        
-        
-        do
-        {
-         
-        Random random = new Random();   
-        RandomNumber = random.Next(1, 9);
-        empty = CheckIfUsed(CP, RandomNumber);
-
-        } while (empty == false);
-        
-        return RandomNumber;
-
+        return empty;
     }
 
-    // see if any of those combinations occure
-    public int IsWinPossible(Player Player)
+    // end of IsEmpty
+    //Checks if Player Can Win
+    public int CheckForWin(int[] player1, int[] player2, Player Player)
     {
-        
-        
-        bool legit = false;
-
+                bool legit = false;
+                
 
         do
         {
-        Random random = new Random();
-        RandomNumber = random.Next(0, 8);
-           
-            /*
-            if (CheckIfUsed(CP, 4))
-            {
-                aiSvar = 5;
-                legit = true;
-                break;
-            }
-             
-            if (CheckIfUsed(CP, 2))
-            {
-                aiSvar = 3;
-                legit = true;
-                break;
-            }
+                Random random = new Random();
+                RandomNumber = random.Next(1, 9);
 
-            
-            else if (CP[0] == 'X' && CP[1] == 'X')
-            {
-                aiSvar = 3;
-                legit = true;
-                break;
-            }       
-            */
-            if (CP[0] == Player.Symbol & CP[8] == Player.Symbol || CP[6] == Player.Symbol & CP[2] == Player.Symbol ||
-                CP[1] == Player.Symbol & CP[7] == Player.Symbol || CP[3] == Player.Symbol & CP[5] == Player.Symbol)
-            {
-                 if (CheckIfUsed(CP, 4))
+                if (player1.Length < 2 && !IsEmpty(player2, 5))
                 {
                     aiSvar = 5;
                     legit = true;
                     break;
                 }
-                 else
-                 {
-                     if (CheckIfUsed(CP, RandomNumber))
-                     {
-                         aiSvar = RandomNumber;
-                         legit = true;
-                         break;
-                     }
-                     continue;
-
-                 }
-
-            }
-
-            else if (CP[6] == Player.Symbol & CP[3] == Player.Symbol || CP[4] == Player.Symbol & CP[8] == Player.Symbol ||
-                CP[2] == Player.Symbol & CP[1] == Player.Symbol)
-            {
-                if (CheckIfUsed(CP, 0))
+                if (player1.Length < 2 && !IsEmpty(player2, 1))
                 {
                     aiSvar = 1;
                     legit = true;
                     break;
                 }
-                else
-                {
-                    if (CheckIfUsed(CP, RandomNumber))
-                    {
-                        aiSvar = RandomNumber;
-                        legit = true;
-                        break;
-                    }
-                    continue;
-
-                }
-
-            }
-
-            else if (CP[0] == Player.Symbol & CP[3] == Player.Symbol || CP[1] == Player.Symbol & CP[4] == Player.Symbol ||
-                CP[8] == Player.Symbol & CP[7] == Player.Symbol)
-            {
-                if (CheckIfUsed(CP, 6))
-                {
-                    aiSvar = 7;
-                    legit = true;
-                    break;
-                }
-                else
-                {
-                    if (CheckIfUsed(CP, RandomNumber))
-                    {
-                        aiSvar = RandomNumber;
-                        legit = true;
-                        break;
-                    }
-                    continue;
-
-                }
-
-            }
-
-            else if (CP[0] == Player.Symbol & CP[4] == Player.Symbol || CP[6] == Player.Symbol & CP[7] == Player.Symbol ||
-               CP[2] == Player.Symbol & CP[5] == Player.Symbol)
-            {
-                if (CheckIfUsed(CP, 8))
-                {
-                    aiSvar = 9;
-                    legit = true;
-                    break;
-                }
-                else
-                {
-                    if (CheckIfUsed(CP, RandomNumber))
-                    {
-                        aiSvar = RandomNumber;
-                        legit = true;
-                        break;
-                    }
-                    continue;
-
-                }
-
-            }
-
-            else if (CP[8] == Player.Symbol & CP[5] == Player.Symbol || CP[6] == Player.Symbol & CP[4] == Player.Symbol ||
-               CP[0] == Player.Symbol & CP[1] == Player.Symbol)
-            {
-                if (CheckIfUsed(CP, 2))
+                if (player1.Length < 2 && !IsEmpty(player2, 3))
                 {
                     aiSvar = 3;
                     legit = true;
                     break;
                 }
-                else
+                if (player1.Length < 2 && !IsEmpty(player2, 7))
                 {
-                    if (CheckIfUsed(CP, RandomNumber))
-                    {
-                        aiSvar = RandomNumber;
-                        legit = true;
-                        break;
-                    }
-                    continue;
-
-                }
-
-            }
-
-            else if (CP[0] == Player.Symbol & CP[6] == Player.Symbol || CP[5] == Player.Symbol & CP[4] == Player.Symbol)
-            {
-                if (CheckIfUsed(CP, 3))
-                {
-                    aiSvar = 4;
+                    aiSvar = 7;
                     legit = true;
                     break;
                 }
-                else
+                if (player1.Length < 2 && !IsEmpty(player2, 9))
                 {
-                    if (CheckIfUsed(CP, RandomNumber))
-                    {
-                        aiSvar = RandomNumber;
-                        legit = true;
-                        break;
-                    }
-                    continue;
-
-                }
-
-            }
-
-            else if (CP[7] == Player.Symbol & CP[4] == Player.Symbol || CP[0] == Player.Symbol & CP[2] == Player.Symbol)
-            {
-                if (CheckIfUsed(CP, 1))
-                {
-                    aiSvar = 2;
+                    aiSvar = 9;
                     legit = true;
                     break;
                 }
-                else
+
+                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 2))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 6))))
                 {
-                    if (CheckIfUsed(CP, RandomNumber))
+                    if (!IsEmpty(player2, 3) && !IsEmpty(player1, 3))
                     {
-                        aiSvar = RandomNumber;
+                        aiSvar = 3;
                         legit = true;
                         break;
                     }
-                    continue;
-
-                }
-
-            }
-            else if (CP[3] == Player.Symbol & CP[4] == Player.Symbol || CP[2] == Player.Symbol & CP[8] == Player.Symbol)
-            {
-                if (CheckIfUsed(CP, 5))
-                {
-                    aiSvar = 6;
-                    legit = true;
-                    break;
-                }
-                else
-                {
-                    if (CheckIfUsed(CP, RandomNumber))
+                    else
                     {
-                        aiSvar = RandomNumber;
-                        legit = true;
-                        break;
+                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                        {
+                            aiSvar = RandomNumber;
+                            legit = true;
+                            break;
+                        }
+                        else
+                        {
+                            legit = false;
+                        }
                     }
-                    continue;
-
-                }
-
-            }
-
-            else if (CP[6] == Player.Symbol & CP[8] == Player.Symbol || CP[1] == Player.Symbol & CP[4] == Player.Symbol)
-            {
-                if (CheckIfUsed(CP, 7))
-                {
-                    aiSvar = 8;
-                    legit = true;
-                    break;
-                }
-                else
-                {
-                    if (CheckIfUsed(CP, RandomNumber))
-                    {
-                        aiSvar = RandomNumber;
-                        legit = true;
-                        break;
-                    }
-                    continue;
-
-                }
-            }
+                    
                 
+                 }
+
+                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 4))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 2))))
+                {
+
+                    if (!IsEmpty(player2, 1) && !IsEmpty(player1, 1))
+                    {
+                        aiSvar = 1;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                        {
+                            aiSvar = RandomNumber;
+                            legit = true;
+                            break;
+                        }
+                        else
+                        {
+                            legit = false;
+                        }
+                    }
+
+                }
+
+                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 4))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 8))))
+                {
+
+
+                    if (!IsEmpty(player2, 7) && !IsEmpty(player1, 7))
+                    {
+                        aiSvar = 7;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                        {
+                            aiSvar = RandomNumber;
+                            legit = true;
+                            break;
+                        }
+                        else
+                        {
+                            legit = false;
+                        }
+                    }
+
+                }
+
+                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 7))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 6))))
+                {
+
+
+                    if (!IsEmpty(player2, 9) && !IsEmpty(player1, 9))
+                    {
+                        aiSvar = 9;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                        {
+                            aiSvar = RandomNumber;
+                            legit = true;
+                            break;
+                        }
+                        else
+                        {
+                            legit = false;
+                        }
+                    }
+
+                }
+                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 9))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 5))))
+                {
+
+
+                    if (!IsEmpty(player2, 8) && !IsEmpty(player1, 8))
+                    {
+                        aiSvar = 8;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber))
+                        {
+                            aiSvar = RandomNumber;
+                            legit = true;
+                            break;
+                        }
+                        else
+                        {
+                            legit = false;
+                        }
+                    }
+
+                }
+                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 7))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 6))))
+                {
+
+
+                    if (!IsEmpty(player2, 4) && !IsEmpty(player1, 4))
+                    {
+                        aiSvar = 4;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                        {
+                            aiSvar = RandomNumber;
+                            legit = true;
+                            break;
+                        }
+                        else
+                        {
+                            legit = false;
+                        }
+                    }
+
+                }
+                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 3))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 5))))
+                {
+
+
+                    if (!IsEmpty(player2, 6) && !IsEmpty(player1, 6))
+                    {
+                        aiSvar = 6;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                        {
+                            aiSvar = RandomNumber;
+                            legit = true;
+                            break;
+                        }
+                        else
+                        {
+                            legit = false;
+                        }
+                    }
+
+                }
+                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 3))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 5))))
+                {
+
+
+                    if (!IsEmpty(player2, 2) && !IsEmpty(player1, 2))
+                    {
+                        aiSvar = 2;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                        {
+                            aiSvar = RandomNumber;
+                            legit = true;
+                            break;
+                        }
+                        else
+                        {
+                            legit = false;
+                        }
+                    }
+
+                }
+                else if ((!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 8))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 6))) ||
+                   (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 9))) || (!IsEmpty(player2, 3)) && (player1.Length >= 2) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 3))))
+                {
+
+
+                    if (!IsEmpty(player2, 5) && !IsEmpty(player1, 5))
+                    {
+                        aiSvar = 5;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                        {
+                            aiSvar = RandomNumber;
+                            legit = true;
+                            break;
+                        }
+                        else
+                        {
+                            legit = false;
+                        }
+                    }
+
+                }
+
                 else
                 {
-                    
-                    
-                if (CheckIfUsed(CP, RandomNumber))
+                    if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
                     {
                         aiSvar = RandomNumber;
                         legit = true;
                         break;
                     }
-                else
-                {
-                    legit = false;
+                    else
+                    {
+                        legit = true;
+                    }
+
+
 
                 }
-
-                    
-
+             
             
-                
-                 
-             }
-        
             
         } while (legit == false);
         
         return aiSvar;
     }
+    
 }
-     // end of combination method
- 
+// end of combination method
+
 
