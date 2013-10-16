@@ -22,18 +22,11 @@ class MikaelsAI2
     public MikaelsAI2(int[] player1, int[] player2, Player Player)
     {
         RoysVariabel = CheckForWin(player1, player2, Player);
-        /*
-        RoysVariabel = TryToWin(player1, player2, Player);
-        if (RoysVariabel == 1337)
-        {
-            RoysVariabel = CheckForWin(player1, player2, Player);
-        }
-        */
+
     } // end of constructor
+    
 
     // a method that checks if the chosen index is already used
-
-
     public bool IsEmpty(int[] arrayToCheck, int num)
     {
         bool empty = false;
@@ -42,9 +35,9 @@ class MikaelsAI2
             empty = true;
 
         return empty;
-    }
+    }// end of IsEmpty
+    
 
-    // end of IsEmpty
     //Checks if Player Can Win
     public int CheckForWin(int[] player1, int[] player2, Player Player)
     {
@@ -555,10 +548,9 @@ class MikaelsAI2
             #endregion
         }
         return aiSvar;
-
     }
     
-}
-// end of combination method
+}// end of combination method
+
 
 
