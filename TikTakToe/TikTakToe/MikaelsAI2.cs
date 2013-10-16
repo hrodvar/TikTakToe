@@ -17,7 +17,7 @@ class MikaelsAI2
     public int RoysVariabel { get; set; }
     private int RandomNumber { get; set; }
     private bool empty { get; set; }
-    
+
     // constructor
     public MikaelsAI2(int[] player1, int[] player2, Player Player)
     {
@@ -32,10 +32,9 @@ class MikaelsAI2
     } // end of constructor
 
     // a method that checks if the chosen index is already used
-    
-    
+
+
     public bool IsEmpty(int[] arrayToCheck, int num)
-        
     {
         bool empty = false;
 
@@ -53,275 +52,12 @@ class MikaelsAI2
 
         while (legit == false)
         {
-                Random random = new Random();
-                RandomNumber = random.Next(1, 9);
+            Random random = new Random();
+            RandomNumber = random.Next(1, 9);
 
-                #region if-BlockOrRandomize
+            #region if-BlockOrRandomize
 
-                if (player1.Length < 2 && !IsEmpty(player2, 5))
-                {
-                    aiSvar = 5;
-                    legit = true;
-                    break;
-                }
-                if (player1.Length < 2 && !IsEmpty(player2, 1))
-                {
-                    aiSvar = 1;
-                    legit = true;
-                    break;
-                }
-                if (player1.Length < 2 && !IsEmpty(player2, 3))
-                {
-                    aiSvar = 3;
-                    legit = true;
-                    break;
-                }
-                if (player1.Length < 2 && !IsEmpty(player2, 7))
-                {
-                    aiSvar = 7;
-                    legit = true;
-                    break;
-                }
-                if (player1.Length < 2 && !IsEmpty(player2, 9))
-                {
-                    aiSvar = 9;
-                    legit = true;
-                    break;
-                }
-
-                else if (((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 2)))) || ((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 6)))) || ((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 7)))))
-                {
-                    if (!IsEmpty(player2, 3) && !IsEmpty(player1, 3))
-                    {
-                        aiSvar = 3;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
-                        {
-                            aiSvar = RandomNumber;
-                            legit = true;
-                            break;
-                        }
-                        else
-                        {
-                            legit = false;
-                        }
-                    }
-                }
-
-                else if (((!IsEmpty(player2, 1)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 4)))) || ((!IsEmpty(player2, 1)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 2)))) || ((!IsEmpty(player2, 1)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 9)))))
-                {
-                    if (!IsEmpty(player2, 1) && !IsEmpty(player1, 1))
-                    {
-                        aiSvar = 1;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
-                        {
-                            aiSvar = RandomNumber;
-                            legit = true;
-                            break;
-                        }
-                        else
-                        {
-                            legit = false;
-                        }
-                    }
-                }
-
-                else if (((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 4)))) || ((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 8)))) || ((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 5)))))
-                {
-
-
-                    if (!IsEmpty(player2, 7) && !IsEmpty(player1, 7))
-                    {
-                        aiSvar = 7;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
-                        {
-                            aiSvar = RandomNumber;
-                            legit = true;
-                            break;
-                        }
-                        else
-                        {
-                            legit = false;
-                        }
-                    }
-                }
-
-                else if (((!IsEmpty(player2, 9)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 7)))) || ((!IsEmpty(player2, 9)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 6)))) || ((!IsEmpty(player2, 9)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 1)))))
-                {
-                    if (!IsEmpty(player2, 9) && !IsEmpty(player1, 9))
-                    {
-                        aiSvar = 9;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
-                        {
-                            aiSvar = RandomNumber;
-                            legit = true;
-                            break;
-                        }
-                        else
-                        {
-                            legit = false;
-                        }
-                    }
-                }
-                else if (((!IsEmpty(player2, 8)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 9)))) || ((!IsEmpty(player2, 8)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 5)))))
-                {
-                    if (!IsEmpty(player2, 8) && !IsEmpty(player1, 8))
-                    {
-                        aiSvar = 8;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        if (!IsEmpty(player1, RandomNumber) && !IsEmpty(player2, RandomNumber))
-                        {
-                            aiSvar = RandomNumber;
-                            legit = true;
-                            break;
-                        }
-                        else
-                        {
-                            legit = false;
-                        }
-                    }
-                }
-                else if (((!IsEmpty(player2, 4)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 7)))) || ((!IsEmpty(player2, 4)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 6)))))
-                {
-                    if (!IsEmpty(player2, 4) && !IsEmpty(player1, 4))
-                    {
-                        aiSvar = 4;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
-                        {
-                            aiSvar = RandomNumber;
-                            legit = true;
-                            break;
-                        }
-                        else
-                        {
-                            legit = false;
-                        }
-                    }
-                }
-                else if (((!IsEmpty(player2, 6)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 3)))) || ((!IsEmpty(player2, 6)) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 5)))))
-                {
-                    if (!IsEmpty(player2, 6) && !IsEmpty(player1, 6))
-                    {
-                        aiSvar = 6;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
-                        {
-                            aiSvar = RandomNumber;
-                            legit = true;
-                            break;
-                        }
-                        else
-                        {
-                            legit = false;
-                        }
-                    }
-                }
-                else if (((!IsEmpty(player2, 2)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 3)))) || ((!IsEmpty(player2, 2)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 5)))))
-                {
-                    if (!IsEmpty(player2, 2) && !IsEmpty(player1, 2))
-                    {
-                        aiSvar = 2;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
-                        {
-                            aiSvar = RandomNumber;
-                            legit = true;
-                            break;
-                        }
-                        else
-                        {
-                            legit = false;
-                        }
-                    }
-                }
-                else if (((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 8)))) || ((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 6)))) ||
-                   ((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 9)))) || ((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 3)))))
-                {
-                    if (!IsEmpty(player2, 5) && !IsEmpty(player1, 5))
-                    {
-                        aiSvar = 5;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
-                        {
-                            aiSvar = RandomNumber;
-                            legit = true;
-                            break;
-                        }
-                        else
-                        {
-                            legit = false;
-                        }
-                    }
-                }
-
-                else
-                {
-                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
-                    {
-                        aiSvar = RandomNumber;
-                        legit = true;
-                        break;
-                    }
-                    else
-                    {
-                        legit = true;
-                    }
-                }
-                #endregion
-        }
-        return aiSvar;
-    
-        }
-    public int TryToWin(int[] player2, int[] player1, Player Player)
-    {
-        bool legit = false;
-
-        while (legit == false)
-        {
-
-            #region if-TryToWin
-
-            if (player1.Length < 2 && (!IsEmpty(player2, 5) && !IsEmpty(player1, 5)))
+            if (player1.Length < 2 && !IsEmpty(player2, 5))
             {
                 aiSvar = 5;
                 legit = true;
@@ -333,107 +69,395 @@ class MikaelsAI2
                 legit = true;
                 break;
             }
-
-            if ((( !IsEmpty(player2, 3) && !IsEmpty(player1, 3)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 2)))) || ((!IsEmpty(player2, 3) && !IsEmpty(player1, 3)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 6)))) || ((!IsEmpty(player2, 3) && !IsEmpty(player1, 3)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 7)))))
+            if (player1.Length < 2 && !IsEmpty(player2, 3))
             {
-                if (!IsEmpty(player1, 3) && !IsEmpty(player2, 3))
+                aiSvar = 3;
+                legit = true;
+                break;
+            }
+            if (player1.Length < 2 && !IsEmpty(player2, 7))
+            {
+                aiSvar = 7;
+                legit = true;
+                break;
+            }
+            if (player1.Length < 2 && !IsEmpty(player2, 9))
+            {
+                aiSvar = 9;
+                legit = true;
+                break;
+            }
+            /////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+
+
+
+            else if (((!IsEmpty(player1, 3)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 2)))) || ((!IsEmpty(player1, 3)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 6)))) || ((!IsEmpty(player1, 3)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 7)))))
+            {
+                if (!IsEmpty(player2, 3) && !IsEmpty(player1, 3))
                 {
                     aiSvar = 3;
                     legit = true;
                     break;
                 }
+                else
+                {
+
+                    legit = false;
+
+                }
             }
 
-            if (((!IsEmpty(player2, 1) && !IsEmpty(player1, 1)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 4)))) || ((!IsEmpty(player2, 1) && !IsEmpty(player1, 1)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 2)))) || ((!IsEmpty(player2, 1) && !IsEmpty(player1, 1)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 9)))))
+            else if (((!IsEmpty(player1, 1)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 4)))) || ((!IsEmpty(player1, 1)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 2)))) || ((!IsEmpty(player1, 1)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 9)))))
             {
-                if (!IsEmpty(player1, 1) && !IsEmpty(player2, 1))
+                if (!IsEmpty(player2, 1) && !IsEmpty(player1, 1))
                 {
                     aiSvar = 1;
                     legit = true;
                     break;
                 }
+                else
+                {
+
+                    legit = false;
+
+                }
             }
 
-            if (((!IsEmpty(player2, 7) && !IsEmpty(player1, 7)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 4)))) || ((!IsEmpty(player2, 7) && !IsEmpty(player1, 7)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 8)))) || ((!IsEmpty(player2, 7) && !IsEmpty(player1, 7)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 5)))))
+            else if (((!IsEmpty(player1, 7)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 4)))) || ((!IsEmpty(player1, 7)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 8)))) || ((!IsEmpty(player1, 7)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 5)))))
             {
-                if (!IsEmpty(player1, 7) && !IsEmpty(player2, 7))
+
+
+                if (!IsEmpty(player2, 7) && !IsEmpty(player1, 7))
                 {
                     aiSvar = 7;
                     legit = true;
                     break;
                 }
+                else
+                {
+
+                    legit = false;
+
+                }
             }
 
-            if (((!IsEmpty(player2, 9) && !IsEmpty(player1, 9)) && ((IsEmpty(player1, 8)) && (IsEmpty(player1, 7)))) || ((!IsEmpty(player2, 9) && !IsEmpty(player1, 9)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 6)))) || ((!IsEmpty(player2, 9) && !IsEmpty(player1, 9)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 5)))))
+            else if (((!IsEmpty(player1, 9)) && ((IsEmpty(player1, 8)) && (IsEmpty(player1, 7)))) || ((!IsEmpty(player1, 9)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 6)))) || ((!IsEmpty(player1, 9)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 1)))))
             {
-                if (!IsEmpty(player1, 9) && !IsEmpty(player2, 9))
+                if (!IsEmpty(player2, 9) && !IsEmpty(player1, 9))
                 {
                     aiSvar = 9;
                     legit = true;
                     break;
                 }
-            }
+                else
+                {
 
-            if (((!IsEmpty(player2, 8) && !IsEmpty(player1, 8)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 9)))) || ((!IsEmpty(player2, 8) && !IsEmpty(player1, 8)) && ((IsEmpty(player1, 2)) && (IsEmpty(player1, 5)))))
+
+                    legit = false;
+
+                }
+            }
+            else if (((!IsEmpty(player1, 8)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 9)))) || ((!IsEmpty(player1, 8)) && ((IsEmpty(player1, 2)) && (IsEmpty(player1, 5)))))
             {
-                if (!IsEmpty(player1, 8) && !IsEmpty(player2, 8))
+                if (!IsEmpty(player2, 8) && !IsEmpty(player1, 8))
                 {
                     aiSvar = 8;
                     legit = true;
                     break;
                 }
+                else
+                {
+                    legit = false;
+                }
             }
-
-            if (((!IsEmpty(player2, 4) && !IsEmpty(player1, 4)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 7)))) || ((!IsEmpty(player2, 4) && !IsEmpty(player1, 4)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 6)))))
+            else if (((!IsEmpty(player1, 4)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 7)))) || ((!IsEmpty(player1, 4)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 6)))))
             {
-                if (!IsEmpty(player1, 4) && !IsEmpty(player2, 4))
+                if (!IsEmpty(player2, 4) && !IsEmpty(player1, 4))
                 {
                     aiSvar = 4;
                     legit = true;
                     break;
                 }
+                else
+                {
+                    legit = false;
+                }
             }
-
-            if (((!IsEmpty(player2, 6) && !IsEmpty(player1, 6)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 3)))) || ((!IsEmpty(player2, 6) && !IsEmpty(player1, 6)) && ((IsEmpty(player1, 4)) && (IsEmpty(player1, 5)))))
+            else if (((!IsEmpty(player1, 6)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 3)))) || ((!IsEmpty(player1, 6)) && ((IsEmpty(player1, 4)) && (IsEmpty(player1, 5)))))
             {
-                if (!IsEmpty(player1, 6) && !IsEmpty(player2, 6))
+                if (!IsEmpty(player2, 6) && !IsEmpty(player1, 6))
                 {
                     aiSvar = 6;
                     legit = true;
                     break;
                 }
+                else
+                {
+                    legit = false;
+                }
             }
-
-            if (((!IsEmpty(player2, 2) && !IsEmpty(player1, 2)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 3)))) || ((!IsEmpty(player2, 2) && !IsEmpty(player1, 2)) && ((IsEmpty(player1, 8)) && (IsEmpty(player1, 5)))))
+            else if (((!IsEmpty(player1, 2)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 3)))) || ((!IsEmpty(player1, 2)) && ((IsEmpty(player1, 8)) && (IsEmpty(player1, 5)))))
             {
-                if (!IsEmpty(player1, 2) && !IsEmpty(player2, 2))
+                if (!IsEmpty(player2, 2) && !IsEmpty(player1, 2))
                 {
                     aiSvar = 2;
                     legit = true;
                     break;
                 }
+                else
+                {
+                    legit = false;
+                }
             }
-
-            if (((!IsEmpty(player2, 5) && !IsEmpty(player1, 5)) && ((IsEmpty(player1, 2)) && (IsEmpty(player1, 8)))) || ((!IsEmpty(player2, 5) && !IsEmpty(player1, 5)) && ((IsEmpty(player1, 4)) && (IsEmpty(player1, 6)))) ||
-               ((!IsEmpty(player2, 5) && !IsEmpty(player1, 5)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 9)))) || ((!IsEmpty(player2, 5) && !IsEmpty(player1, 5)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 3)))))
+            else if (((!IsEmpty(player1, 5)) && ((IsEmpty(player1, 2)) && (IsEmpty(player1, 8)))) || ((!IsEmpty(player1, 5)) && ((IsEmpty(player1, 4)) && (IsEmpty(player1, 6)))) ||
+               ((!IsEmpty(player1, 5)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 9)))) || ((!IsEmpty(player1, 5)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 3)))))
             {
-                if (!IsEmpty(player1, 5) && !IsEmpty(player2, 5))
+                if (!IsEmpty(player2, 5) && !IsEmpty(player1, 5))
                 {
                     aiSvar = 5;
                     legit = true;
                     break;
                 }
+                else
+                {
+                    legit = false;
+                }
             }
+            ///////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////
+
+            else if (((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 2)))) || ((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 6)))) || ((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 7)))))
+            {
+                if (!IsEmpty(player2, 3) && !IsEmpty(player1, 3))
+                {
+                    aiSvar = 3;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
+                }
+            }
+
+            else if (((!IsEmpty(player2, 1)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 4)))) || ((!IsEmpty(player2, 1)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 2)))) || ((!IsEmpty(player2, 1)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 9)))))
+            {
+                if (!IsEmpty(player2, 1) && !IsEmpty(player1, 1))
+                {
+                    aiSvar = 1;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
+                }
+            }
+
+            else if (((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 4)))) || ((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 8)))) || ((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 5)))))
+            {
+
+
+                if (!IsEmpty(player2, 7) && !IsEmpty(player1, 7))
+                {
+                    aiSvar = 7;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
+                }
+            }
+
+            else if (((!IsEmpty(player2, 9)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 7)))) || ((!IsEmpty(player2, 9)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 6)))) || ((!IsEmpty(player2, 9)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 1)))))
+            {
+                if (!IsEmpty(player2, 9) && !IsEmpty(player1, 9))
+                {
+                    aiSvar = 9;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    if (player1.Length >= 3 && !IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
+                }
+            }
+            else if (((!IsEmpty(player2, 8)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 9)))) || ((!IsEmpty(player2, 8)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 5)))))
+            {
+                if (!IsEmpty(player2, 8) && !IsEmpty(player1, 8))
+                {
+                    aiSvar = 8;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    if (!IsEmpty(player1, RandomNumber) && !IsEmpty(player2, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
+                }
+            }
+            else if (((!IsEmpty(player2, 4)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 7)))) || ((!IsEmpty(player2, 4)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 6)))))
+            {
+                if (!IsEmpty(player2, 4) && !IsEmpty(player1, 4))
+                {
+                    aiSvar = 4;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
+                }
+            }
+            else if (((!IsEmpty(player2, 6)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 3)))) || ((!IsEmpty(player2, 6)) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 5)))))
+            {
+                if (!IsEmpty(player2, 6) && !IsEmpty(player1, 6))
+                {
+                    aiSvar = 6;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
+                }
+            }
+            else if (((!IsEmpty(player2, 2)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 3)))) || ((!IsEmpty(player2, 2)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 5)))))
+            {
+                if (!IsEmpty(player2, 2) && !IsEmpty(player1, 2))
+                {
+                    aiSvar = 2;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
+                }
+            }
+            else if (((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 8)))) || ((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 6)))) ||
+               ((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 9)))) || ((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 3)))))
+            {
+                if (!IsEmpty(player2, 5) && !IsEmpty(player1, 5))
+                {
+                    aiSvar = 5;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
+                }
+            }
+
             else
             {
-                aiSvar = 1337;
-                legit = true;
-                break;
+                if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                {
+                    aiSvar = RandomNumber;
+                    legit = true;
+                    break;
+                }
+                else
+                {
+                    legit = true;
+                }
             }
             #endregion
         }
         return aiSvar;
+
     }
+    
 }
 // end of combination method
 
