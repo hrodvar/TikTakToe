@@ -95,7 +95,9 @@ class MikaelsAI2
 
 
 
-            else if (((!IsEmpty(player1, 3)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 2)))) || ((!IsEmpty(player1, 3)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 6)))) || ((!IsEmpty(player1, 3)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 7)))))
+            else if (((!IsEmpty(player2, 3) && !IsEmpty(player1, 3)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 2)))) ||
+                     ((!IsEmpty(player2, 3) && !IsEmpty(player1, 3)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 6)))) ||
+                     ((!IsEmpty(player2, 3) && !IsEmpty(player1, 3)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 7)))))
             {
                 if (!IsEmpty(player2, 3) && !IsEmpty(player1, 3))
                 {
@@ -105,13 +107,22 @@ class MikaelsAI2
                 }
                 else
                 {
-
-                    legit = false;
-
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
                 }
             }
 
-            else if (((!IsEmpty(player1, 1)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 4)))) || ((!IsEmpty(player1, 1)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 2)))) || ((!IsEmpty(player1, 1)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 9)))))
+            else if (((!IsEmpty(player2, 1) && !IsEmpty(player1, 1)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 4)))) ||
+                     ((!IsEmpty(player2, 1) && !IsEmpty(player1, 1)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 2)))) ||
+                     ((!IsEmpty(player2, 1) && !IsEmpty(player1, 1)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 9)))))
             {
                 if (!IsEmpty(player2, 1) && !IsEmpty(player1, 1))
                 {
@@ -121,13 +132,22 @@ class MikaelsAI2
                 }
                 else
                 {
-
-                    legit = false;
-
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
                 }
             }
 
-            else if (((!IsEmpty(player1, 7)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 4)))) || ((!IsEmpty(player1, 7)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 8)))) || ((!IsEmpty(player1, 7)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 5)))))
+            else if (((!IsEmpty(player2, 7) && !IsEmpty(player1, 7)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 4)))) ||
+                     ((!IsEmpty(player2, 7) && !IsEmpty(player1, 7)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 8)))) ||
+                     ((!IsEmpty(player2, 7) && !IsEmpty(player1, 7)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 5)))))
             {
 
 
@@ -139,13 +159,22 @@ class MikaelsAI2
                 }
                 else
                 {
-
-                    legit = false;
-
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
                 }
             }
 
-            else if (((!IsEmpty(player1, 9)) && ((IsEmpty(player1, 8)) && (IsEmpty(player1, 7)))) || ((!IsEmpty(player1, 9)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 6)))) || ((!IsEmpty(player1, 9)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 1)))))
+            else if (((!IsEmpty(player2, 9) && !IsEmpty(player1, 9)) && ((IsEmpty(player1, 8)) && (IsEmpty(player1, 7)))) ||
+                     ((!IsEmpty(player2, 9) && !IsEmpty(player1, 9)) && ((IsEmpty(player1, 3)) && (IsEmpty(player1, 6)))) ||
+                     ((!IsEmpty(player2, 9) && !IsEmpty(player1, 9)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 1)))))
             {
                 if (!IsEmpty(player2, 9) && !IsEmpty(player1, 9))
                 {
@@ -155,13 +184,20 @@ class MikaelsAI2
                 }
                 else
                 {
-
-
-                    legit = false;
-
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
                 }
             }
-            else if (((!IsEmpty(player1, 8)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 9)))) || ((!IsEmpty(player1, 8)) && ((IsEmpty(player1, 2)) && (IsEmpty(player1, 5)))))
+            else if (((!IsEmpty(player2, 8) && !IsEmpty(player1, 8)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 9)))) ||
+                     ((!IsEmpty(player2, 8) && !IsEmpty(player1, 8)) && ((IsEmpty(player1, 2)) && (IsEmpty(player1, 5)))))
             {
                 if (!IsEmpty(player2, 8) && !IsEmpty(player1, 8))
                 {
@@ -171,10 +207,20 @@ class MikaelsAI2
                 }
                 else
                 {
-                    legit = false;
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
                 }
             }
-            else if (((!IsEmpty(player1, 4)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 7)))) || ((!IsEmpty(player1, 4)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 6)))))
+            else if (((!IsEmpty(player2, 4) && !IsEmpty(player1, 4)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 7)))) ||
+                     ((!IsEmpty(player2, 4) && !IsEmpty(player1, 4)) && ((IsEmpty(player1, 5)) && (IsEmpty(player1, 6)))))
             {
                 if (!IsEmpty(player2, 4) && !IsEmpty(player1, 4))
                 {
@@ -184,10 +230,20 @@ class MikaelsAI2
                 }
                 else
                 {
-                    legit = false;
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
                 }
             }
-            else if (((!IsEmpty(player1, 6)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 3)))) || ((!IsEmpty(player1, 6)) && ((IsEmpty(player1, 4)) && (IsEmpty(player1, 5)))))
+            else if (((!IsEmpty(player2, 6) && !IsEmpty(player1, 6)) && ((IsEmpty(player1, 9)) && (IsEmpty(player1, 3)))) ||
+                     ((!IsEmpty(player2, 6) && !IsEmpty(player1, 6)) && ((IsEmpty(player1, 4)) && (IsEmpty(player1, 5)))))
             {
                 if (!IsEmpty(player2, 6) && !IsEmpty(player1, 6))
                 {
@@ -197,10 +253,20 @@ class MikaelsAI2
                 }
                 else
                 {
-                    legit = false;
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
                 }
             }
-            else if (((!IsEmpty(player1, 2)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 3)))) || ((!IsEmpty(player1, 2)) && ((IsEmpty(player1, 8)) && (IsEmpty(player1, 5)))))
+            else if (((!IsEmpty(player2, 2) && !IsEmpty(player1, 2)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 3)))) ||
+                     ((!IsEmpty(player2, 2) && !IsEmpty(player1, 2)) && ((IsEmpty(player1, 8)) && (IsEmpty(player1, 5)))))
             {
                 if (!IsEmpty(player2, 2) && !IsEmpty(player1, 2))
                 {
@@ -210,11 +276,22 @@ class MikaelsAI2
                 }
                 else
                 {
-                    legit = false;
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
                 }
             }
-            else if (((!IsEmpty(player1, 5)) && ((IsEmpty(player1, 2)) && (IsEmpty(player1, 8)))) || ((!IsEmpty(player1, 5)) && ((IsEmpty(player1, 4)) && (IsEmpty(player1, 6)))) ||
-               ((!IsEmpty(player1, 5)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 9)))) || ((!IsEmpty(player1, 5)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 3)))))
+            else if (((!IsEmpty(player2, 5) && !IsEmpty(player1, 5)) && ((IsEmpty(player1, 2)) && (IsEmpty(player1, 8)))) ||
+                     ((!IsEmpty(player2, 5) && !IsEmpty(player1, 5)) && ((IsEmpty(player1, 4)) && (IsEmpty(player1, 6)))) ||
+                     ((!IsEmpty(player2, 5) && !IsEmpty(player1, 5)) && ((IsEmpty(player1, 1)) && (IsEmpty(player1, 9)))) ||
+                     ((!IsEmpty(player2, 5) && !IsEmpty(player1, 5)) && ((IsEmpty(player1, 7)) && (IsEmpty(player1, 3)))))
             {
                 if (!IsEmpty(player2, 5) && !IsEmpty(player1, 5))
                 {
@@ -224,7 +301,16 @@ class MikaelsAI2
                 }
                 else
                 {
-                    legit = false;
+                    if (!IsEmpty(player2, RandomNumber) && !IsEmpty(player1, RandomNumber))
+                    {
+                        aiSvar = RandomNumber;
+                        legit = true;
+                        break;
+                    }
+                    else
+                    {
+                        legit = false;
+                    }
                 }
             }
             ///////////////////////////////////////////////////////////////
@@ -234,7 +320,9 @@ class MikaelsAI2
             ///////////////////////////////////////////////////////////////
             ///////////////////////////////////////////////////////////////
 
-            else if (((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 2)))) || ((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 6)))) || ((!IsEmpty(player2, 3)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 7)))))
+            else if (((!IsEmpty(player1, 3) && !IsEmpty(player2, 3)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 2)))) ||
+                     ((!IsEmpty(player1, 3) && !IsEmpty(player2, 3)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 6)))) || 
+                     ((!IsEmpty(player1, 3) && !IsEmpty(player2, 3)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 7)))))
             {
                 if (!IsEmpty(player2, 3) && !IsEmpty(player1, 3))
                 {
@@ -257,7 +345,9 @@ class MikaelsAI2
                 }
             }
 
-            else if (((!IsEmpty(player2, 1)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 4)))) || ((!IsEmpty(player2, 1)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 2)))) || ((!IsEmpty(player2, 1)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 9)))))
+            else if (((!IsEmpty(player1, 1) && !IsEmpty(player2, 1)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 4)))) || 
+                     ((!IsEmpty(player1, 1) && !IsEmpty(player2, 1)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 2)))) || 
+                     ((!IsEmpty(player1, 1) && !IsEmpty(player2, 1)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 9)))))
             {
                 if (!IsEmpty(player2, 1) && !IsEmpty(player1, 1))
                 {
@@ -280,7 +370,9 @@ class MikaelsAI2
                 }
             }
 
-            else if (((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 4)))) || ((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 8)))) || ((!IsEmpty(player2, 7)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 5)))))
+            else if (((!IsEmpty(player1, 7) && !IsEmpty(player2, 7)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 4)))) ||
+                     ((!IsEmpty(player1, 7) && !IsEmpty(player2, 7)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 8)))) ||
+                     ((!IsEmpty(player1, 7) && !IsEmpty(player2, 7)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 5)))))
             {
 
 
@@ -305,7 +397,9 @@ class MikaelsAI2
                 }
             }
 
-            else if (((!IsEmpty(player2, 9)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 7)))) || ((!IsEmpty(player2, 9)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 6)))) || ((!IsEmpty(player2, 9)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 1)))))
+            else if (((!IsEmpty(player1, 9) && !IsEmpty(player2, 9)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 7)))) ||
+                     ((!IsEmpty(player1, 9) && !IsEmpty(player2, 9)) && ((IsEmpty(player2, 3)) && (IsEmpty(player2, 6)))) ||
+                     ((!IsEmpty(player1, 9) && !IsEmpty(player2, 9)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 1)))))
             {
                 if (!IsEmpty(player2, 9) && !IsEmpty(player1, 9))
                 {
@@ -327,7 +421,8 @@ class MikaelsAI2
                     }
                 }
             }
-            else if (((!IsEmpty(player2, 8)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 9)))) || ((!IsEmpty(player2, 8)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 5)))))
+            else if (((!IsEmpty(player1, 8) && !IsEmpty(player2, 8)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 9)))) ||
+                     ((!IsEmpty(player1, 8) && !IsEmpty(player2, 8)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 5)))))
             {
                 if (!IsEmpty(player2, 8) && !IsEmpty(player1, 8))
                 {
@@ -349,7 +444,8 @@ class MikaelsAI2
                     }
                 }
             }
-            else if (((!IsEmpty(player2, 4)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 7)))) || ((!IsEmpty(player2, 4)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 6)))))
+            else if (((!IsEmpty(player1, 4) && !IsEmpty(player2, 4)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 7)))) ||
+                     ((!IsEmpty(player1, 4) && !IsEmpty(player2, 4)) && ((IsEmpty(player2, 5)) && (IsEmpty(player2, 6)))))
             {
                 if (!IsEmpty(player2, 4) && !IsEmpty(player1, 4))
                 {
@@ -371,7 +467,8 @@ class MikaelsAI2
                     }
                 }
             }
-            else if (((!IsEmpty(player2, 6)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 3)))) || ((!IsEmpty(player2, 6)) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 5)))))
+            else if (((!IsEmpty(player1, 6) && !IsEmpty(player2, 6)) && ((IsEmpty(player2, 9)) && (IsEmpty(player2, 3)))) ||
+                     ((!IsEmpty(player1, 6) && !IsEmpty(player2, 6)) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 5)))))
             {
                 if (!IsEmpty(player2, 6) && !IsEmpty(player1, 6))
                 {
@@ -393,7 +490,8 @@ class MikaelsAI2
                     }
                 }
             }
-            else if (((!IsEmpty(player2, 2)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 3)))) || ((!IsEmpty(player2, 2)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 5)))))
+            else if (((!IsEmpty(player1, 2) && !IsEmpty(player2, 2)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 3)))) ||
+                     ((!IsEmpty(player1, 2) && !IsEmpty(player2, 2)) && ((IsEmpty(player2, 8)) && (IsEmpty(player2, 5)))))
             {
                 if (!IsEmpty(player2, 2) && !IsEmpty(player1, 2))
                 {
@@ -415,8 +513,10 @@ class MikaelsAI2
                     }
                 }
             }
-            else if (((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 8)))) || ((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 6)))) ||
-               ((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 9)))) || ((!IsEmpty(player2, 5)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 3)))))
+            else if (((!IsEmpty(player1, 5) && !IsEmpty(player2, 5)) && ((IsEmpty(player2, 2)) && (IsEmpty(player2, 8)))) ||
+                     ((!IsEmpty(player1, 5) && !IsEmpty(player2, 5)) && ((IsEmpty(player2, 4)) && (IsEmpty(player2, 6)))) ||
+                     ((!IsEmpty(player1, 5) && !IsEmpty(player2, 5)) && ((IsEmpty(player2, 1)) && (IsEmpty(player2, 9)))) ||
+                     ((!IsEmpty(player1, 5) && !IsEmpty(player2, 5)) && ((IsEmpty(player2, 7)) && (IsEmpty(player2, 3)))))
             {
                 if (!IsEmpty(player2, 5) && !IsEmpty(player1, 5))
                 {
