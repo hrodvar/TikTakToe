@@ -126,6 +126,7 @@ public class StartUp
             case '4': { GetNames("Philips AI", true,  4); break; }
             case '5': { GetNames("Xins AI", true,  5); break; }
             case '6': { GetNames("Hrois AI", true,  6); break; }
+            default: { GetNames(" ", false, 1); break; }
         }   // end of switch
     }   // end of AltVal()
 

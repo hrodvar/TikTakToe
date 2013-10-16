@@ -94,39 +94,45 @@ public class Game
             }   // end of if
             else
             {
-                choose = Console.ReadKey(true).KeyChar;
-                value = (int)Char.GetNumericValue(choose);
+                bool enforcer = true;
+                while (enforcer == true)
+                {
+                    choose = Console.ReadKey(true).KeyChar;
+                    value = (int)Char.GetNumericValue(choose);
+                    if (value == 1 || value == 2 || value == 3 || value == 4 || value == 5 || value == 6 || value == 7 || value == 8 || value == 9) { enforcer = false; break; }
+                    else continue;
+                }
             }   // end of else
 
-            if (value < 1 || value > 9)
-                continue;
-            
-            foreach (int valuePlayer in player.PlayerMoves)
-            {
-                if (value == valuePlayer)
-                {
-                    gameSituation = false;
-                    break;
-                }   // end of if 
-                else
-                {
-                    foreach (int valueCompetitor in competitor)
-                    {
-                        if (value == valueCompetitor)
-                        {
-                            gameSituation = false;
-                            break;
-                        }   // end of if
-                        else
-                            gameSituation = true;
-                    }   // end of foreach
-                }   // end of else
-            }   // end of foreach
 
-            if (gameSituation)
-                board.Play(choose, player.Symbol, board.SymbolColor);
-            if (player.PlayerMoves.Count() + competitor.Count() == 9)
-                Draw = "\t  Draw";
+                foreach (int valuePlayer in player.PlayerMoves)
+                {
+                    if (value == valuePlayer)
+                    {
+                        gameSituation = false;
+                        break;
+                    }   // end of if 
+                    else
+                    {
+                        foreach (int valueCompetitor in competitor)
+                        {
+                            if (value == valueCompetitor)
+                            {
+                                gameSituation = false;
+                                break;
+                            }   // end of if
+                            else
+                                gameSituation = true;
+                        }   // end of foreach
+                    }   // end of else
+                }   // end of foreach
+
+                if (gameSituation)
+                    board.Play(choose, player.Symbol, board.SymbolColor);
+                if (player.PlayerMoves.Count() + competitor.Count() == 9)
+                    Draw = "\t  Draw";
+
+            
         } while (!gameSituation);
 
         gameSituation = true;

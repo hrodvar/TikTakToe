@@ -88,7 +88,7 @@ public class Board
 
     public int Play(char c, char symbol, string color)
     {
-        int i = 0;
+        int i = 0;       
         switch (c)
         {
             case '1': { XPlayerPosition = XPosition[0]; YPlayerPosition = YPosition[0]; i = 1; break; }
@@ -100,7 +100,9 @@ public class Board
             case '7': { XPlayerPosition = XPosition[0]; YPlayerPosition = YPosition[2]; i = 7; break; }
             case '8': { XPlayerPosition = XPosition[1]; YPlayerPosition = YPosition[2]; i = 8; break; }
             case '9': { XPlayerPosition = XPosition[2]; YPlayerPosition = YPosition[2]; i = 9; break; }
-        }   // end of switch
+        } 
+             // end of switch
+        
         WritePosition(symbol, color);
         return i;
     }   // end of Play()
