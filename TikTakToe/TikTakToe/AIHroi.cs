@@ -22,10 +22,10 @@ public class AIHroi
         BoardArray = CombineArrays(computerArray, humanArray);
         InsertValue(computerArray, -1);
         InsertValue(humanArray, 1);
-        if (computerArray.Length == 1)
+        if (computerArray.Length == 1 && humanArray[0] != 5)
             ReturnValue = 5;
         else
-        ReturnValue = CheckOutTheWinningsPositions();
+            ReturnValue = CheckOutTheWinningsPositions();
     }
     // end of constructor
 

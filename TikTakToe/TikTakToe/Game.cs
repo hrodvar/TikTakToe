@@ -31,7 +31,6 @@ public class Game
         bool AIRunner = ai.Name == " " ? false : true;
         bool gameSituation = true;
         Board board = new Board(boardSize);
-        //Intelligence intelligence = new Intelligence();
         board.PlayerInformation(human.PlayerName, human.Symbol, computer.PlayerName, computer.Symbol);
         int i = 0;
         do
@@ -50,9 +49,9 @@ public class Game
     // methods
     public bool PlayValue(Player player, int[] competitor, Board board, int i, bool ai)
     {
+        string[] winnerArray = new string[4];
         string Draw = "";
         bool gameSituation = true;
-        Intelligence intelligence = new Intelligence(WinnerPoints);
         int length = player.PlayerMoves.Length + 1;
         Array.Resize<int>(ref player.PlayerMoves, length);
         length = player.PlayerMoves.Length - 1;
@@ -133,14 +132,31 @@ public class Game
         gameSituation = true;
 
         player.PlayerMoves[length] = value;
-        if (GameSituation(player, intelligence.IntelligenceCalculator(player.PlayerMoves), 
-            board, intelligence.WinningsLine, Draw))
 
-            gameSituation = true;
+        winnerArray = Winner(player);
+        if (winnerArray != null)
+            gameSituation = GameSituation(player, true, board, WinningLine(winnerArray), Draw);
         else
-            gameSituation = false;
+        {
+            int[] fake = new int[3];
+            gameSituation = GameSituation(player, false, board, fake, Draw);
+        }
         return gameSituation;
     }   // end of PlayValue()
+
+    public int[] WinningLine(string[] array)
+    {
+        int[] result = new int[3];
+        bool res = false;
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (i > 0)
+                res = int.TryParse(array[i], out result[i - 1]);
+        }
+
+        return result;
+    }   // end of WinningLine()
 
     public bool GameSituation(Player player, bool gameSituation, Board board, int[] array, string draw)
     {
@@ -185,6 +201,69 @@ public class Game
         output = name.EndsWith("s") ? ("It's " + name + " turn") : ("It's " + name + "s turn");
         (output).CW(11, 18, WinnerColor, TableColor);        
     }   // end of Turn()
+
+    public string[] Winner(Player player)
+    {
+        char[] Arr = new char[9];
+        string[] winner = new string[4];
+        Array.Sort(player.PlayerMoves);
+        int arrayValue = 0;
+        for (int i = 0; i < player.PlayerMoves.Length; i++)
+        {
+            arrayValue =  player.PlayerMoves[i] - 1;
+            Arr[arrayValue] = player.Symbol;
+        }
+
+        if (Arr[0] == Arr[1] && Arr[1] == Arr[2] && 
+            Arr[0] != 0 && Arr[1] != 0 && Arr[2] != 0)
+        {
+            winner = new string[] { player.PlayerName, "1", "2", "3" };
+            return winner;
+        }
+        else if (Arr[3] == Arr[4] && Arr[4] == Arr[5] &&
+            Arr[3] != 0 && Arr[4] != 0 && Arr[5] != 0)
+        {
+            winner = new string[] { player.PlayerName, "4", "5", "6" };
+            return winner;
+        }
+        else if (Arr[6] == Arr[7] && Arr[7] == Arr[8] &&
+            Arr[6] != 0 && Arr[7] != 0 && Arr[8] != 0)
+        {
+            winner = new string[] { player.PlayerName, "7", "8", "9" };
+            return winner;
+        }
+        else if (Arr[0] == Arr[3] && Arr[3] == Arr[6] &&
+            Arr[0] != 0 && Arr[3] != 0 && Arr[6] != 0)
+        {
+            winner = new string[] { player.PlayerName, "1", "4", "7" };
+            return winner;
+        }
+        else if (Arr[1] == Arr[4] && Arr[4] == Arr[7] &&
+            Arr[1] != 0 && Arr[4] != 0 && Arr[7] != 0)
+        {
+            winner = new string[] { player.PlayerName, "2", "5", "8" };
+            return winner;
+        }
+        else if (Arr[2] == Arr[5] && Arr[5] == Arr[8] &&
+            Arr[2] != 0 && Arr[5] != 0 && Arr[8] != 0)
+        {
+            winner = new string[] { player.PlayerName, "3", "6", "9" };
+            return winner;
+        }
+        else if (Arr[0] == Arr[4] && Arr[4] == Arr[8] &&
+            Arr[0] != 0 && Arr[4] != 0 && Arr[8] != 0)
+        {
+            winner = new string[] { player.PlayerName, "1", "5", "9" };
+            return winner;
+        }
+        else if (Arr[6] == Arr[4] && Arr[4] == Arr[2] &&
+            Arr[6] != 0 && Arr[4] != 0 && Arr[2] != 0)
+        {
+            winner = new string[] { player.PlayerName, "7", "5", "3" };
+            return winner;
+        }
+        else return null;
+    }   // end of Winner()
 
     // end of methods
 
