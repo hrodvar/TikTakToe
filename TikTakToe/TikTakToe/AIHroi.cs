@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 /* 
  * Programmeringsverktyg: Visual Studio 2012 pro.
@@ -23,9 +24,18 @@ public class AIHroi
         InsertValue(computerArray, -1);
         InsertValue(humanArray, 1);
         if (computerArray.Length == 1)
-            ReturnValue = 5;
+        {
+            if (!humanArray.All(number => humanArray.Contains(5)))
+            {
+                ReturnValue = 5;
+            }
+            else
+            {
+                ReturnValue = 1;
+            }
+        }
         else
-        ReturnValue = CheckOutTheWinningsPositions();
+            ReturnValue = CheckOutTheWinningsPositions();
     }
     // end of constructor
 

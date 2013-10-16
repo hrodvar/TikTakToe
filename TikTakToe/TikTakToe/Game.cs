@@ -99,8 +99,8 @@ public class Game
                 value = (int)Char.GetNumericValue(choose);
             }   // end of else
 
-            if (value < 1 || value > 9)
-                continue;
+            //if (value < 1 || value > 9)
+            //   continue;
             
             foreach (int valuePlayer in player.PlayerMoves)
             {
