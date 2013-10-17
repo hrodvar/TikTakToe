@@ -33,7 +33,7 @@ public class StartUp
     public StartUp()
     {     
         CreateFront(BoardSize);
-        MenylList();      
+        MenyList();      
     }   // end of  StartUp()
     // end of constructor
       
@@ -98,10 +98,12 @@ public class StartUp
         AIAuthor = new AI(name, runAI);
     }  // end of AIPlayer()  
 
-    public void MenylList()
+    public void MenyList()
     {
+        string output = "TicTacToe";
+        int x = (Console.WindowWidth / 2) - (output.Length / 2);
         CreateFront(BoardSize);
-        ("Velcome to TicTacToe!").CW(10, 5, TextColor, TableColor);
+        (output).CW(x, 5, TextColor, TableColor);
 
         ("1. Player vs Player ").CW(8, 8, TextColor, TableColor);
         ("2. Player vs Mikaels  AI ").CW(8, 9, TextColor, TableColor);
@@ -109,6 +111,7 @@ public class StartUp
         ("4. Player vs Philips  AI ").CW(8, 11, DisableTextColor, TableColor);
         ("5. Player vs Xins     AI ").CW(8, 12, DisableTextColor, TableColor);
         ("6. Player vs Hrois    AI ").CW(8, 13, TextColor, TableColor);
+        ("7. About TicTacToe ").CW(8, 15, TextColor, TableColor);
        
         AltVal();
         Console.Clear();
@@ -116,19 +119,64 @@ public class StartUp
 
     public void AltVal()
     {
-        char key = Console.ReadKey(true).KeyChar;
+        bool run = false;
+        do{
+        
+            char key = Console.ReadKey(true).KeyChar;
            
-        switch (key)
-        {
-            case '1': { GetNames(" ", false, 1);break; }
-            case '2': { GetNames("Mikaels AI", true,  2); break; }
-            case '3': { GetNames("Fatos AI", true,  3); break; }
-            case '4': { GetNames("Philips AI", true,  4); break; }
-            case '5': { GetNames("Xins AI", true,  5); break; }
-            case '6': { GetNames("Hrois AI", true,  6); break; }
-            default: { GetNames(" ", false, 1); break; }
-        }   // end of switch
+            switch (key)
+            {
+                case '1': { GetNames(" ", false, 1); run = true; break; }
+                case '2': { GetNames("Mikaels AI", true, 2); run = true; break; }
+                case '3': 
+                    { 
+                        ErrorMessage("Fatos AI is not a function"); 
+                        run = false; 
+                        break; 
+                    }
+                case '4': 
+                    { 
+                        ErrorMessage("Philips AI is not a function"); 
+                        run = false; 
+                        break; 
+                    }
+                case '5': 
+                    { 
+                        ErrorMessage("Xins AI is not a function"); 
+                        run = false; 
+                        break; 
+                    }
+                case '6': { GetNames("Hrois AI", true, 6); run = true; break; }
+                case '7': { run = About(); break; }
+                default : { GetNames(" ", false, 1); run = true; break; }
+            }   // end of switch
+        } while(!run);
     }   // end of AltVal()
+
+    public bool About()
+    {
+        String emptyOutput = new String(' ', Console.WindowWidth);
+        int x = 0;
+        int y = 20;
+
+        (emptyOutput).CW(x, y, TableColor, TableColor);
+        
+        WinnerScreen winnerScreen = new WinnerScreen();
+        //CreateFront(BoardSize);
+        MenyList(); 
+        
+        return true;
+    }   // end of About()
+
+    public void ErrorMessage(string message)
+    {
+        String emptyOutput = new String(' ', Console.WindowWidth);
+        int x = (Console.WindowWidth / 2) - (message.Length / 2);
+        int y = 20;
+
+        (emptyOutput).CW(0, y, TableColor, TableColor);
+        (message).CW(x, y, DisableTextColor, TableColor);
+    }   // end of ErrorMessage()
 
     // end of methods
 

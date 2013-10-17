@@ -94,13 +94,17 @@ public class Game
             }   // end of if
             else
             {
-                choose = Console.ReadKey(true).KeyChar;
-                value = (int)Char.GetNumericValue(choose);
+                bool result = false;
+                do{
+                    choose = Console.ReadKey(true).KeyChar;
+                    
+                    result = Int32.TryParse(choose.ToString(), out value);
+                } while (!result);
             }   // end of else
 
             if (value < 1 || value > 9)
                 continue;
-            
+             
             foreach (int valuePlayer in player.PlayerMoves)
             {
                 if (value == valuePlayer)
