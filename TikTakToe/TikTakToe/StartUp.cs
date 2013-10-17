@@ -130,19 +130,19 @@ public class StartUp
                 case '2': { GetNames("Mikaels AI", true, 2); run = true; break; }
                 case '3': 
                     { 
-                        ErrorMessage("Fatos AI is not a function"); 
+                        ErrorMessage("Fatos AI isn't in function"); 
                         run = false; 
                         break; 
                     }
                 case '4': 
-                    { 
-                        ErrorMessage("Philips AI is not a function"); 
+                    {
+                        ErrorMessage("Philips AI isn't in function"); 
                         run = false; 
                         break; 
                     }
                 case '5': 
-                    { 
-                        ErrorMessage("Xins AI is not a function"); 
+                    {
+                        ErrorMessage("Xins AI isn't in function"); 
                         run = false; 
                         break; 
                     }
